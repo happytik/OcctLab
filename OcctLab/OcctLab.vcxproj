@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|x64">
+      <Configuration>Template</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CC06F5C5-5C67-423D-9535-C3B15898602F}</ProjectGuid>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|x64'" Label="Configuration">
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\OcctLab</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\OcctLab</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\OcctLab\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\OcctLab\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Lib\math;.\Sys\GUI;.\Sys\cmd;.\Sys\Model;.\Sys\Plugin;.\Sys\Display;.\Sys\Storage;.\App\Surface;.\App\Curve;.\App\Solid;.\App\MachDesign;.\Lib\Geom;.\Sys\Input;.\Sys\InputTool;.\..\OcctXLib\occinc;.\App\syscmd;$(MYOCCT720)\inc;.\App\Trsf;.\DataExchange\Export;.\DataExchange\Import;.\3rdParty\DXF;.\3rdParty\zlib;.\App\Dimension;.\Ext\script;.\Dialogs;$(SolutionDir)LuaLib;$(SolutionDir)OcctXLib\include;$(SolutionDir)SurfXLib;$(SolutionDir)LuaUXLib\include;$(SolutionDir)OxModel\include;$(SolutionDir)GearXLib\include;$(SolutionDir)OxSysLib\include;$(SolutionDir)OxSysLib\include\Gui;$(SolutionDir)OxSysLib\include\Input</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WNT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>OcctXLib.lib;TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;LuaLib.lib;SurfXLib.lib;LuaUXLib.lib;OxModel.lib;GearXLib.lib;OxSysLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(MYOCCT720)\win32\vc11\libd;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;.\Gui;.\Script;.\App\syscmd;.\App\Trsf;$(OCCT_ROOT_760)\inc;$(SolutionDir)LuaLib;$(SolutionDir)QxBaseLib\occinc;$(SolutionDir)LuaUXLib\include;$(SolutionDir)QxModelLib\include;$(SolutionDir)QxSysLib\include;$(SolutionDir)QxSysLib\include\Gui;$(SolutionDir)QxSysLib\include\Input;$(SolutionDir)QxBaseLib\include;$(SolutionDir)QxDataExchg\include;$(SolutionDir)QxLuaScript\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;WNT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;LuaLib.lib;QxModelLib.lib;QxSysLib.lib;QxBaseLib.lib;QxDataExchg.lib;QxLuaScript.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OCCT_ROOT_760)\win64\vc14\libd;$(OutDir);.\lib\zlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Base;.\Lib\math;.\Sys\GUI;.\Sys\cmd;.\Sys\Model;.\Sys\Plugin;.\Sys\Display;.\Sys\Storage;.\App\Surface;.\App\Curve;.\App\Solid;.\App\MachDesign;.\Lib\Geom;.\Sys\Input;.\Sys\InputTool;.\occinc;.\App\syscmd;$(MYOCCT720)\inc;.\App\Trsf;.\DataExchange\Export;.\DataExchange\Import;.\3rdParty\DXF;.\3rdParty\zlib;.\App\Dimension;$(SolutionDir)LuaLib;.\Ext\script;.\Dialogs;$(SolutionDir)OcctXLib\include;$(SolutionDir)SurfXLib;$(SolutionDir)OxModel\include;$(SolutionDir)LuaUXLib\include;$(SolutionDir)GearXLib\include;$(SolutionDir)OxSysLib\include;$(SolutionDir)OxSysLib\include\Gui</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WNT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;LuaLib.lib;SurfXLib.lib;OcctXLib.lib;LuaUXLib.lib;OxModel.lib;GearXLib.lib;OxSysLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(MYOCCT720)\win32\vc11\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;.\Gui;.\Script;.\App\syscmd;.\App\Trsf;$(OCCT_ROOT_760)\inc;$(SolutionDir)LuaLib;$(SolutionDir)QxBaseLib\occinc;$(SolutionDir)LuaUXLib\include;$(SolutionDir)QxModelLib\include;$(SolutionDir)QxSysLib\include;$(SolutionDir)QxSysLib\include\Gui;$(SolutionDir)QxSysLib\include\Input;$(SolutionDir)QxBaseLib\include;$(SolutionDir)QxDataExchg\include;$(SolutionDir)QxLuaScript\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WNT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;LuaLib.lib;QxModelLib.lib;QxSysLib.lib;QxBaseLib.lib;QxDataExchg.lib;QxLuaScript.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OCCT_ROOT_760)\win64\vc14\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="App\syscmd\kcmDbgTool.cpp" />
+    <ClCompile Include="app\syscmd\kcmDelete.cpp" />
+    <ClCompile Include="app\syscmd\kcmDispLineStyle.cpp" />
+    <ClCompile Include="app\syscmd\kcmDispLineWidth.cpp" />
+    <ClCompile Include="app\syscmd\kcmDispTransparency.cpp" />
+    <ClCompile Include="app\syscmd\kcmDispVisible.cpp" />
+    <ClCompile Include="app\syscmd\kcmShapeAnalysis.cpp" />
+    <ClCompile Include="app\syscmd\kcmUCSMgr.cpp" />
+    <ClCompile Include="app\syscmd\kuiSyscmdPlugin.cpp" />
+    <ClCompile Include="app\Trsf\kcmTrsfCopy.cpp" />
+    <ClCompile Include="app\Trsf\kcmTrsfMirror.cpp" />
+    <ClCompile Include="app\Trsf\kcmTrsfMove.cpp" />
+    <ClCompile Include="app\Trsf\kcmTrsfRotate.cpp" />
+    <ClCompile Include="app\Trsf\kcmTrsfScale.cpp" />
+    <ClCompile Include="app\Trsf\kuiTrsfPlugin.cpp" />
+    <ClCompile Include="Gui\FilterDispDialog.cpp" />
+    <ClCompile Include="Gui\kuiCmdBar.cpp" />
+    <ClCompile Include="Gui\kuiLayerBar.cpp" />
+    <ClCompile Include="Gui\kuiMainBar.cpp" />
+    <ClCompile Include="Gui\kuiPropBar.cpp" />
+    <ClCompile Include="Gui\LineStyleAndWidthDlg.cpp" />
+    <ClCompile Include="Gui\ModelTreeCtrl.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MainFrm2.cpp" />
+    <ClCompile Include="OcctLab.cpp" />
+    <ClCompile Include="OcctLabDoc.cpp" />
+    <ClCompile Include="OcctLabView.cpp" />
+    <ClCompile Include="script\ScriptLib.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App\syscmd\kcmDbgTool.h" />
+    <ClInclude Include="app\syscmd\kcmDelete.h" />
+    <ClInclude Include="app\syscmd\kcmDispLineStyle.h" />
+    <ClInclude Include="app\syscmd\kcmDispLineWidth.h" />
+    <ClInclude Include="app\syscmd\kcmDispTransparency.h" />
+    <ClInclude Include="app\syscmd\kcmDispVisible.h" />
+    <ClInclude Include="app\syscmd\kcmShapeAnalysis.h" />
+    <ClInclude Include="app\syscmd\kcmUCSMgr.h" />
+    <ClInclude Include="app\syscmd\kuiSyscmdPlugin.h" />
+    <ClInclude Include="app\Trsf\kcmTrsfCopy.h" />
+    <ClInclude Include="app\Trsf\kcmTrsfMirror.h" />
+    <ClInclude Include="app\Trsf\kcmTrsfMove.h" />
+    <ClInclude Include="app\Trsf\kcmTrsfRotate.h" />
+    <ClInclude Include="app\Trsf\kcmTrsfScale.h" />
+    <ClInclude Include="app\Trsf\kuiTrsfPlugin.h" />
+    <ClInclude Include="Gui\FilterDispDialog.h" />
+    <ClInclude Include="Gui\kuiCmdBar.h" />
+    <ClInclude Include="Gui\kuiLayerBar.h" />
+    <ClInclude Include="Gui\kuiMainBar.h" />
+    <ClInclude Include="Gui\kuiPropBar.h" />
+    <ClInclude Include="Gui\LineStyleAndWidthDlg.h" />
+    <ClInclude Include="Gui\ModelTreeCtrl.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="OcctLab.h" />
+    <ClInclude Include="OcctLabDoc.h" />
+    <ClInclude Include="OcctLabView.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="script\ScriptLib.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\bitmap2.bmp" />
+    <None Include="res\OcctLab.ico" />
+    <None Include="res\OcctLab.rc2" />
+    <None Include="res\OcctLabDoc.ico" />
+    <None Include="res\Toolbar.bmp" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OcctLab.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuildStep Include="res\OcctLab.manifest">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CustomBuildStep>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\ToyCAX\ToyCAX\res\ModelTreeIcons16.bmp" />
+    <Image Include="..\..\ToyCAX\ToyCAX\res\ModelTreeIcons24.bmp" />
+    <Image Include="res\ModelTreeIcons16.bmp" />
+    <Image Include="res\ModelTreeIcons24.bmp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="OcctLab.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

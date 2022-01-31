@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{e327e817-98eb-4604-b426-08999f9be327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\syscmd">
+      <UniqueIdentifier>{8ee86e4a-e158-41e5-9203-400d7441502a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App\Trsf">
+      <UniqueIdentifier>{13a090d4-54b8-407c-b284-22ee407237a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{df523633-3e1e-4cc9-92fb-8c2c4ab8fdad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{3d6e275d-a17f-4fcb-9840-c664c2372913}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OcctLab.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OcctLabDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OcctLabView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kcmDelete.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kcmDispLineStyle.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kcmDispLineWidth.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kcmDispTransparency.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kcmDispVisible.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kcmShapeAnalysis.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kcmUCSMgr.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\syscmd\kuiSyscmdPlugin.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="app\Trsf\kcmTrsfCopy.cpp">
+      <Filter>App\Trsf</Filter>
+    </ClCompile>
+    <ClCompile Include="app\Trsf\kcmTrsfMirror.cpp">
+      <Filter>App\Trsf</Filter>
+    </ClCompile>
+    <ClCompile Include="app\Trsf\kcmTrsfMove.cpp">
+      <Filter>App\Trsf</Filter>
+    </ClCompile>
+    <ClCompile Include="app\Trsf\kcmTrsfRotate.cpp">
+      <Filter>App\Trsf</Filter>
+    </ClCompile>
+    <ClCompile Include="app\Trsf\kcmTrsfScale.cpp">
+      <Filter>App\Trsf</Filter>
+    </ClCompile>
+    <ClCompile Include="app\Trsf\kuiTrsfPlugin.cpp">
+      <Filter>App\Trsf</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="App\syscmd\kcmDbgTool.cpp">
+      <Filter>App\syscmd</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\FilterDispDialog.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\kuiCmdBar.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\kuiLayerBar.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\kuiMainBar.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\kuiPropBar.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\LineStyleAndWidthDlg.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui\ModelTreeCtrl.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="script\ScriptLib.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OcctLab.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OcctLabDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OcctLabView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kcmDelete.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kcmDispLineStyle.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kcmDispLineWidth.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kcmDispTransparency.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kcmDispVisible.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kcmShapeAnalysis.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kcmUCSMgr.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\syscmd\kuiSyscmdPlugin.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="app\Trsf\kcmTrsfCopy.h">
+      <Filter>App\Trsf</Filter>
+    </ClInclude>
+    <ClInclude Include="app\Trsf\kcmTrsfMirror.h">
+      <Filter>App\Trsf</Filter>
+    </ClInclude>
+    <ClInclude Include="app\Trsf\kcmTrsfMove.h">
+      <Filter>App\Trsf</Filter>
+    </ClInclude>
+    <ClInclude Include="app\Trsf\kcmTrsfRotate.h">
+      <Filter>App\Trsf</Filter>
+    </ClInclude>
+    <ClInclude Include="app\Trsf\kcmTrsfScale.h">
+      <Filter>App\Trsf</Filter>
+    </ClInclude>
+    <ClInclude Include="app\Trsf\kuiTrsfPlugin.h">
+      <Filter>App\Trsf</Filter>
+    </ClInclude>
+    <ClInclude Include="App\syscmd\kcmDbgTool.h">
+      <Filter>App\syscmd</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\FilterDispDialog.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\kuiCmdBar.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\kuiLayerBar.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\kuiMainBar.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\kuiPropBar.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\LineStyleAndWidthDlg.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui\ModelTreeCtrl.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="script\ScriptLib.h">
+      <Filter>Script</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\bitmap2.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\OcctLab.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\OcctLab.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\OcctLabDoc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OcctLab.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuildStep Include="res\OcctLab.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\ToyCAX\ToyCAX\res\ModelTreeIcons16.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="..\..\ToyCAX\ToyCAX\res\ModelTreeIcons24.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\ModelTreeIcons16.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\ModelTreeIcons24.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

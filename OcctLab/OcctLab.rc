@@ -1,0 +1,652 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\OcctLab.rc2""  // 非 Microsoft Visual C++ 编辑资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#include ""afxprint.rc""       // 打印/打印预览资源\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\OcctLab.ico"
+IDR_OCCTLABTYPE         ICON                    "res\\OcctLabDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDB_BITMAP_IMGLIST      BITMAP                  "res\\bitmap2.bmp"
+IDB_BITMAP_MODELTREE    BITMAP                  "res\\ModelTreeIcons16.bmp"
+IDB_BITMAP_MODELTREE24  BITMAP                  "res\\ModelTreeIcons24.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "新建\tCtrl+N(&N)",              ID_FILE_NEW
+        MENUITEM "打开...\tCtrl+O(&O)",           ID_FILE_OPEN
+        MENUITEM "保存\tCtrl+S(&S)",              ID_FILE_SAVE
+        MENUITEM "另存为(&A)...",                  ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        POPUP "导入"
+        BEGIN
+            MENUITEM "BRep文件",                      32793
+            MENUITEM "STEP文件",                      ID_IMPORT_STEP_FILE
+            MENUITEM "DXF文件",                       32789
+            MENUITEM "IGES文件",                      32788
+            MENUITEM "SMTF文件",                      ID_IMPORT_SMTF_FILE
+            MENUITEM "SMBF文件",                      ID_IMPORT_SMBF_FILE
+        END
+        POPUP "导出"
+        BEGIN
+            MENUITEM "导出BREP",                      32803
+            MENUITEM "导出选中BREP",                    32806
+            MENUITEM "导出STEP",                      ID_MENU_EXPORT_STEP
+            MENUITEM "导出选中STEP",                    ID_MENU_EXPORT_SELSTEP
+            MENUITEM "导出IGES",                      ID_MENU_EXPORT_IGES
+            MENUITEM "导出选中IGES",                    32840
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "打印...\tCtrl+P(&P)",           ID_FILE_PRINT
+        MENUITEM "打印预览(&V)",                    ID_FILE_PRINT_PREVIEW
+        MENUITEM "打印设置(&R)...",                 ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "最近的文件",                       ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                      ID_APP_EXIT
+    END
+    POPUP "编辑(&E)"
+    BEGIN
+        MENUITEM "撤消\tCtrl+Z(&U)",              ID_EDIT_UNDO
+        MENUITEM "重做\tCtrl+R(&O) ",             ID_EDIT_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "剪切\tCtrl+X(&T)",              ID_EDIT_CUT
+        MENUITEM "复制\tCtrl+C(&C)",              ID_EDIT_COPY
+        MENUITEM "粘贴\tCtrl+V(&P)",              ID_EDIT_PASTE
+        MENUITEM "删除\tDel",                     ID_EDIT_DELETE
+    END
+    POPUP "视图(&V)"
+    BEGIN
+        MENUITEM "工具栏(&T)",                     ID_VIEW_TOOLBAR
+        MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        POPUP "基准面"
+        BEGIN
+            MENUITEM SEPARATOR
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "正视于(&V)",                     32783
+        MENUITEM SEPARATOR
+        MENUITEM "上视图(&U)",                     ID_MENU_VIEW_TOP
+        MENUITEM "下视图(&D)",                     ID_MENU_VIEW_BOTTOM
+        MENUITEM "前视图(&F)",                     ID_MENU_VIEW_FRONT
+        MENUITEM "后视图(&B)",                     ID_MENU_VIEW_BACK
+        MENUITEM "左视图(&L)",                     ID_MENU_VIEW_LEFT
+        MENUITEM "右视图(&R)",                     ID_MENU_VIEW_RIGHT
+        MENUITEM SEPARATOR
+        MENUITEM "Fit All",                     ID_MENU_FITALL
+    END
+    POPUP "曲线(&C)"
+    BEGIN
+        MENUITEM "xxxxxx",                      ID_MENU_CURVE_DUMB
+    END
+    POPUP "曲面(&S)"
+    BEGIN
+        MENUITEM "xxxxxx",                      ID_32851
+    END
+    POPUP "实体(&D)"
+    BEGIN
+        MENUITEM "xxxxxx",                      ID_32852
+    END
+    POPUP "工具(&T)"
+    BEGIN
+        MENUITEM "dump view",                   ID_MENU_DUMP_VIEW
+        MENUITEM "shape struct",                32792
+        MENUITEM "lua script",                  ID_MENU_LUA_SCRIPT
+        POPUP "COM test"
+        BEGIN
+            MENUITEM "Add",                         ID_COM_TEST_ADD
+        END
+        MENUITEM "show Sensitive",              32845
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 OcctLab(&A)...",           ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_MODELTREE MENU
+BEGIN
+    MENUITEM "model menu",                  ID_MODELMENU
+    POPUP "layer menu"
+    BEGIN
+        MENUITEM "新建图层",                        ID_MENU_NEW_LAYER
+        MENUITEM "删除图层",                        ID_MENU_DEL_LAYER
+        MENUITEM "设为当前",                        ID_MENU_SET_CURLAYER
+        MENUITEM "显示",                          ID_MENU_LAYER_SHOW
+        MENUITEM "隐藏",                          ID_MENU_LAYER_HIDE
+        MENUITEM "设置颜色",                        ID_LAYERMENU_SET_COLOR
+        MENUITEM "线型和线宽",                       ID_LAYERMENU_LINE_SW
+    END
+    POPUP "entity menu"
+    BEGIN
+        MENUITEM "显示",                          ID_MENU_ENTITY_SHOW
+        MENUITEM "隐藏",                          ID_MENU_ENTITY_HIDE
+        MENUITEM "设置颜色",                        ID_ENTITYMENU_SET_COLOR
+        MENUITEM "线型和线宽",                       ID_ENTITYMENU_LINE_SW
+        MENUITEM SEPARATOR
+        MENUITEM "移动到图层...",                    ID_ENTITYMENU_MOVE_TO_LAYER
+        MENUITEM "拷贝到图层...",                    ID_ENTITYMENU_COPY_TO_LAYER
+    END
+    POPUP "coordsystem menu"
+    BEGIN
+        MENUITEM "设为当前坐标系",                     32822
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 OcctLab"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "OcctLab Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2011",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_DIALOG_TEXTEDIT DIALOGEX 0, 0, 253, 107
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,142,86,50,14
+    PUSHBUTTON      "取消",IDCANCEL,196,86,50,14
+    GROUPBOX        "文本设置",IDC_STATIC,7,3,239,77
+    PUSHBUTTON      "字体..",IDC_BUTTON_SELFONT,188,56,50,14
+    LTEXT           "字符串:",IDC_STATIC,13,21,28,8
+    EDITTEXT        IDC_EDIT_TEXTLINE,55,18,184,14,ES_AUTOHSCROLL
+    LTEXT           "文字高度:",IDC_STATIC,13,39,36,8
+    EDITTEXT        IDC_EDIT_TEXT_HEIGHT,55,36,49,14,ES_AUTOHSCROLL
+    CONTROL         "生成曲面",IDC_CHECK_BUILD_FACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,58,48,10
+    LTEXT           "字符间距:",IDC_STATIC,117,39,36,8
+    EDITTEXT        IDC_EDIT_CHAR_SPACE,155,36,49,14,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_SHAPE_STRUCT DIALOGEX 0, 0, 292, 238
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Shape Struct Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,169,217,50,14
+    PUSHBUTTON      "取消",IDCANCEL,228,217,50,14
+    CONTROL         "",IDC_TREE_SHAPE_STRUCT,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,7,278,206
+END
+
+IDD_DIALOG_FILTER_DISPLAY DIALOGEX 0, 0, 203, 98
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "过滤显示"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,92,77,50,14
+    PUSHBUTTON      "取消",IDCANCEL,146,77,50,14
+    GROUPBOX        "静态",IDC_STATIC,7,7,189,58
+    CONTROL         "Point",IDC_CHECK_POINT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,21,32,10
+    CONTROL         "Curve",IDC_CHECK_CURVE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,79,21,35,10
+    CONTROL         "Wire",IDC_CHECK_WIRE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,21,31,10
+    CONTROL         "Surface",IDC_CHECK_SURFACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,34,41,10
+    CONTROL         "Shell",IDC_CHECK_SHELL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,79,34,31,10
+    CONTROL         "Solid",IDC_CHECK_SOLID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,143,34,31,10
+    CONTROL         "CompSolid",IDC_CHECK_COMPSOLID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,48,49,10
+    CONTROL         "COMPOUND",IDC_CHECK_COMPOUND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,79,48,55,10
+END
+
+IDD_DIALOG_LUA_SCRIPT DIALOGEX 0, 0, 325, 329
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "lua script dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "关闭",IDOK,268,308,50,14
+    EDITTEXT        IDC_EDIT_LUA_SCRIPT,9,16,307,139,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    PUSHBUTTON      "检查",IDC_BUTTON_CHECK_SCRIPT,212,157,50,14
+    PUSHBUTTON      "执行",IDC_BUTTON_RUN_SCRIPT,267,157,50,14
+    EDITTEXT        IDC_EDIT_OUTPUT,10,196,306,83,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | ES_WANTRETURN
+    PUSHBUTTON      "清空脚本",IDC_BUTTON_CLEAR_SCRIPT,157,157,50,14
+    PUSHBUTTON      "清空输出",IDC_BUTTON_CLEAR_OUTPUT,268,283,50,14
+    GROUPBOX        "脚本",IDC_STATIC,7,3,311,179
+    GROUPBOX        "输出",IDC_STATIC,7,186,311,115
+END
+
+IDD_PROPERTY_DIALOG DIALOGEX 0, 0, 229, 237
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "属性对话框"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "关闭",IDOK,172,216,50,14
+    CONTROL         "",IDC_PROPERTY_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,7,215,205
+END
+
+IDD_DIALOG_PROGRESS DIALOGEX 0, 0, 247, 76
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "进度对话框"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "终止",ID_BUTTON_TERMINATE,164,55,50,14
+    CONTROL         "",IDC_PROGRESS_THREAD,"msctls_progress32",WS_BORDER,14,34,221,14
+    LTEXT           "Static",IDC_STATIC_PROGTEXT,15,19,218,8
+END
+
+IDD_DIALOG_LINE_DISPATTR DIALOGEX 0, 0, 175, 89
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "线型和线宽"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,55,68,50,14
+    PUSHBUTTON      "取消",IDCANCEL,109,68,50,14
+    LTEXT           "线型:",IDC_STATIC,23,25,20,8
+    COMBOBOX        IDC_COMBO_LINE_STYLE,48,23,96,59,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "线宽:",IDC_STATIC,23,45,20,8
+    EDITTEXT        IDC_EDIT_LINE_WIDTH,48,42,78,14,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_LINE_WIDTH,"msctls_updown32",UDS_ARROWKEYS,133,42,11,14
+    GROUPBOX        "属性值",IDC_STATIC,7,7,161,56
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "OcctLab.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "OcctLab.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "翻译", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DIALOG_TEXTEDIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 100
+    END
+
+    IDD_DIALOG_SHAPE_STRUCT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 285
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 231
+    END
+
+    IDD_DIALOG_FILTER_DISPLAY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 196
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 91
+    END
+
+    IDD_DIALOG_LUA_SCRIPT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 318
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 322
+    END
+
+    IDD_PROPERTY_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 222
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 230
+    END
+
+    IDD_DIALOG_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 240
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+
+    IDD_DIALOG_LINE_DISPATTR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 168
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 82
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG_LINE_DISPATTR DLGINIT
+BEGIN
+    IDC_COMBO_LINE_STYLE, 0x403, 6, 0
+0x4f53, 0x494c, 0x0044, 
+    IDC_COMBO_LINE_STYLE, 0x403, 5, 0
+0x4144, 0x4853, "\000" 
+    IDC_COMBO_LINE_STYLE, 0x403, 4, 0
+0x4f44, 0x0054, 
+    IDC_COMBO_LINE_STYLE, 0x403, 8, 0
+0x4f44, 0x4454, 0x5341, 0x0048, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "OcctLab\nOccFile\nOcctLab\nOcctLabType(*.oclprt)\n.oclprt\nOcctLab.Document\nOcctLab.Document"
+    IDS_STATUS_PROMPT       "状态栏提示信息"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "OcctLab"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "创建新文档\n新建"
+    ID_FILE_OPEN            "打开现有文档\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
+    ID_FILE_PAGE_SETUP      "更改打印选项\n页面设置"
+    ID_FILE_PRINT_SETUP     "更改打印机选项和打印选项\n打印设置"
+    ID_FILE_PRINT           "打印活动文档\n打印"
+    ID_FILE_PRINT_PREVIEW   "显示整页\n打印预览"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "打开此文档"
+    ID_FILE_MRU_FILE2       "打开此文档"
+    ID_FILE_MRU_FILE3       "打开此文档"
+    ID_FILE_MRU_FILE4       "打开此文档"
+    ID_FILE_MRU_FILE5       "打开此文档"
+    ID_FILE_MRU_FILE6       "打开此文档"
+    ID_FILE_MRU_FILE7       "打开此文档"
+    ID_FILE_MRU_FILE8       "打开此文档"
+    ID_FILE_MRU_FILE9       "打开此文档"
+    ID_FILE_MRU_FILE10      "打开此文档"
+    ID_FILE_MRU_FILE11      "打开此文档"
+    ID_FILE_MRU_FILE12      "打开此文档"
+    ID_FILE_MRU_FILE13      "打开此文档"
+    ID_FILE_MRU_FILE14      "打开此文档"
+    ID_FILE_MRU_FILE15      "打开此文档"
+    ID_FILE_MRU_FILE16      "打开此文档"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "清除选定内容\n清除"
+    ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
+    ID_EDIT_COPY            "复制选定内容并将其放到剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切选定内容并将其放到剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的文本\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一操作\n重复"
+    ID_EDIT_REPLACE         "用其他文本替换特定的文本\n替换"
+    ID_EDIT_SELECT_ALL      "选定整个文档\n全选"
+    ID_EDIT_UNDO            "撤消上一操作\n撤消"
+    ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "更改窗口大小"
+    AFX_IDS_SCMOVE          "更改窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小为图标"
+    AFX_IDS_SCMAXIMIZE      "使窗口最大化显示"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到前一个文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务列表"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预览"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_DELETE          "删除一个或多个选定对象\n删除"
+    ID_MENU_DUMP_VIEW       "输出当前视图信息"
+    ID_MENU_LUA_SCRIPT      "执行lua的脚本"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\OcctLab.rc2"  // 非 Microsoft Visual C++ 编辑资源
+#include "afxres.rc"         // 标准组件
+#include "afxprint.rc"       // 打印/打印预览资源
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

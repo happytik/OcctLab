@@ -36,3 +36,5 @@ Obj/
 .vs/
 *.bak
 *.aps
+*.vss
+*.scc
