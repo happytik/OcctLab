@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\Geom">
+      <UniqueIdentifier>{e6f58ca7-367a-475a-868f-95539fd085eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Utils">
+      <UniqueIdentifier>{7559b8b2-7554-4a75-8e62-cc273939c4a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Base">
+      <UniqueIdentifier>{efeeaa25-211f-4818-97c9-026ff93bd5ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxBaseLibApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\QxCurveInter.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\QxBaseUtils.cpp">
+      <Filter>源文件\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\kColor.cpp">
+      <Filter>源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\kPoint.cpp">
+      <Filter>源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\kVector.cpp">
+      <Filter>源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\QxDbgTool.cpp">
+      <Filter>源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\QxInputBase.cpp">
+      <Filter>源文件\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\kcgAnalysis.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\kcgIntersect.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\QxBRepLib.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\QxCurveLib.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\QxCurvePicker.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\QxFacePointPicker.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Geom\QxSurfLib.cpp">
+      <Filter>源文件\Geom</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxBaseLibApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxLibDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxBaseDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxPrecision.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxCurveInter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxBaseUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kColor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kPoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kVector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcgAnalysis.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcgIntersect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\KCommonError.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxBRepLib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxCurveLib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxCurvePicker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxDbgTool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxFacePointPicker.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxInputBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxSurfLib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QxBaseLib.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\QxBaseLib.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QxBaseLib.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

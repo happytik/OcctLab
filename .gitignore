@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+bin/
+Obj/
+.vs/
+*.bak
+*.aps
