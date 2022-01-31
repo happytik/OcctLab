@@ -1,0 +1,16 @@
+#include "StdAfx.h"
+#include "kiInputTool.h"
+#include "kiInputEdit.h"
+
+//////////////////////////////////////////////////////////
+//
+
+//////////////////////////////////////////////////////////
+//
+
+kiInputEdit::kiInputEdit(void)
+{
+	_pInputEditCallBack = NULL;
+	m_pOptionSet = NULL;
+}
+

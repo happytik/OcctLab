@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Input">
+      <UniqueIdentifier>{a53ba8f2-b63a-4b53-b4a9-ca8573804ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Gui">
+      <UniqueIdentifier>{ed4b8776-6f51-4a58-8073-8efab84218d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Cmd">
+      <UniqueIdentifier>{3315298b-4d81-4dfc-a34e-0a8c58c7fba6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Disp">
+      <UniqueIdentifier>{7c608dbe-de1f-4958-a135-ddd1bb3fca1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Dlgs">
+      <UniqueIdentifier>{8501990a-18c5-4e0c-a74b-faf0e5e47e4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Geo">
+      <UniqueIdentifier>{e32587aa-0229-47be-86d3-d2c26ea587e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Gui">
+      <UniqueIdentifier>{07e6de36-0358-4fa7-842a-fd439d14b596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Input">
+      <UniqueIdentifier>{a9b77325-b7de-4fe9-90f3-9a14a73dc6bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Plugin">
+      <UniqueIdentifier>{3e3747a6-e158-40d9-a9f7-bfa4196fa803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Sys">
+      <UniqueIdentifier>{fe2e4014-24aa-4d9f-9a7f-a71baf4b541f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Stg">
+      <UniqueIdentifier>{8266c51c-0ca1-4247-ba64-a57011bdf9e7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxSysLibApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Cmd\kcmUtils.cpp">
+      <Filter>源文件\Cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Cmd\kiCommand.cpp">
+      <Filter>源文件\Cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Cmd\kiCommandMgr.cpp">
+      <Filter>源文件\Cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Disp\kcDispArrow.cpp">
+      <Filter>源文件\Disp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Disp\kcDispObj.cpp">
+      <Filter>源文件\Disp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Disp\kcPreviewObj.cpp">
+      <Filter>源文件\Disp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Disp\kcPreviewObj2.cpp">
+      <Filter>源文件\Disp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Disp\kcPreviewText.cpp">
+      <Filter>源文件\Disp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Dlgs\InputDblDlg.cpp">
+      <Filter>源文件\Dlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Dlgs\InputIntDlg.cpp">
+      <Filter>源文件\Dlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Geo\kcgTextLib.cpp">
+      <Filter>源文件\Geo</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Geo\kcSysUtils.cpp">
+      <Filter>源文件\Geo</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Geo\QxAnimationShape.cpp">
+      <Filter>源文件\Geo</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\AutoHideBar.cpp">
+      <Filter>源文件\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\DrawFrame.cpp">
+      <Filter>源文件\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\PinDockBar.cpp">
+      <Filter>源文件\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\scbarcf.cpp">
+      <Filter>源文件\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\scbarg.cpp">
+      <Filter>源文件\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\sizecbar.cpp">
+      <Filter>源文件\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Gui\XInputEdit.cpp">
+      <Filter>源文件\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputAngle.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputDirTool.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputEdit.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputEntityTool.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputLength.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputOptionsTool.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputPicker.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputPoint.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputPointOnCurve.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputPointTool.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputTool.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputValueTool.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiInputVector.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiOptionSet.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\kiParseString.cpp">
+      <Filter>源文件\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Sys\kcDocContext.cpp">
+      <Filter>源文件\Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Sys\QxWndTimerMgr.cpp">
+      <Filter>源文件\Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Plugin\QxCmdPlugin.cpp">
+      <Filter>源文件\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Plugin\QxCmdPluginImpl.cpp">
+      <Filter>源文件\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Plugin\QxCommandItem.cpp">
+      <Filter>源文件\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Plugin\QxPluginMgr.cpp">
+      <Filter>源文件\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Stg\QxStgDocReader.cpp">
+      <Filter>源文件\Stg</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Stg\QxStgDocWriter.cpp">
+      <Filter>源文件\Stg</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Dlgs\kuiProgressDlg.cpp">
+      <Filter>源文件\Dlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Sys\kcProgressThread.cpp">
+      <Filter>源文件\Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Dlgs\ShapeStructDialog.cpp">
+      <Filter>源文件\Dlgs</Filter>
+    </ClCompile>
+    <ClCompile Include="source\QxSysLib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxSysLibApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputAngle.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputDirTool.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputEdit.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputEntityTool.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputLength.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputOptionsTool.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputPicker.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputPoint.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputPointOnCurve.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputPointTool.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputTool.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputValueTool.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiInputVector.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\kiOptionSet.h">
+      <Filter>头文件\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\AutoHideBar.h">
+      <Filter>头文件\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\DrawFrame.h">
+      <Filter>头文件\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\PinDockBar.h">
+      <Filter>头文件\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\scbarcf.h">
+      <Filter>头文件\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\scbarg.h">
+      <Filter>头文件\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\sizecbar.h">
+      <Filter>头文件\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Gui\XInputEdit.h">
+      <Filter>头文件\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcDispArrow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcDispObj.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcDocContext.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcgTextLib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcmUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcPreviewObj.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcPreviewText.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcSysUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kiCommand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kiCommandMgr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kiParseString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxAnimationShape.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxCmdPlugin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxCmdPluginImpl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxCommandItem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxPluginMgr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxSysInterface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxWndTimerMgr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Dlgs\InputDblDlg.h">
+      <Filter>源文件\Dlgs</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Dlgs\InputIntDlg.h">
+      <Filter>源文件\Dlgs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxStgDocReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxStgDocWriter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxStgDocDef.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Dlgs\kuiProgressDlg.h">
+      <Filter>源文件\Dlgs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\kcProgressThread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Dlgs\ShapeStructDialog.h">
+      <Filter>源文件\Dlgs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\QxSysLib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QxSysLib.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\QxSysLib.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QxSysLib.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
