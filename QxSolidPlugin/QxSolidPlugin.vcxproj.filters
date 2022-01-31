@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="make">
+      <UniqueIdentifier>{e6162299-2f93-43b1-a974-612f97f244d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="edit">
+      <UniqueIdentifier>{cc8bf76d-e4ef-480f-852f-bab8d7232853}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{e214f789-58e1-4f27-93d2-26167a8d12f2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxSolidPluginApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxSolidPlugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmSolidBoolean.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidBox.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidCone.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidCylinder.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidSphere.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmSolidDeCompound.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmSolidDraft.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmSolidFillet.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmSolidLoft.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmSolidOffset.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmSolidSewing.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmSolidTrim.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="edit\kcmThickSolid.cpp">
+      <Filter>edit</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidPipe.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidPipeShell.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidPrism.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="make\kcmSolidRevol.cpp">
+      <Filter>make</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\kcmOneFaceBase.cpp">
+      <Filter>tools</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxSolidPluginApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxSolidPlugin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmSolidBoolean.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidBox.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidCone.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidCylinder.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidSphere.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmSolidDeCompound.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmSolidDraft.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmSolidFillet.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmSolidLoft.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmSolidOffset.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmSolidSewing.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmSolidTrim.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="edit\kcmThickSolid.h">
+      <Filter>edit</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidPipe.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidPipeShell.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidPrism.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="make\kcmSolidRevol.h">
+      <Filter>make</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\kcmOneFaceBase.h">
+      <Filter>tools</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QxSolidPlugin.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\QxSolidPlugin.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QxSolidPlugin.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

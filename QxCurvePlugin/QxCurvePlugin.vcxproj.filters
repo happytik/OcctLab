@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Make">
+      <UniqueIdentifier>{e1e3f28c-8077-40d7-a48e-8a32bacc488d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Edit">
+      <UniqueIdentifier>{015493be-8032-4e9b-8a67-30ca5fe7372a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialogs">
+      <UniqueIdentifier>{9f65a145-0d6c-4781-83dc-373faa69aeb9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxCurvePluginApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxCurvePlugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmSewCurve.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmArc.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmCircle.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmLine.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmPoint.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmPolygon.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmRect.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmSpline.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmCurveBlend.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmCurveBreak.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmCurveFillet.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmCurveOffset.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmCurvePolyline.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmCurveTrim.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmFaceCurve.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmInterCurve.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\kcmNormProjCurve.cpp">
+      <Filter>Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\TextEditDialog.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Make\kcmWireText.cpp">
+      <Filter>Make</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxCurvePluginApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxCurvePlugin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmSewCurve.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmArc.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmCircle.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmLine.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmPoint.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmPolygon.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmRect.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmSpline.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmCurveBlend.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmCurveBreak.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmCurveFillet.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmCurveOffset.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmCurvePolyline.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmCurveTrim.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmFaceCurve.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmInterCurve.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\kcmNormProjCurve.h">
+      <Filter>Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialogs\TextEditDialog.h">
+      <Filter>Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Make\kcmWireText.h">
+      <Filter>Make</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QxCurvePlugin.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\QxCurvePlugin.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QxCurvePlugin.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

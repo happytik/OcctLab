@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Dialogs">
+      <UniqueIdentifier>{b4bf9cc5-e75f-407f-9062-f7c0dcfaf209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Analyze">
+      <UniqueIdentifier>{bcf38ef0-efe5-4baf-bd21-4e720be239a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dim">
+      <UniqueIdentifier>{c48b8bb9-ba9f-460c-8b07-c99d9fb049ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxToolPluginApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="QxToolPlugin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmShapeFix.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmShapeCheck.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmBasePlane.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmDispColor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmDispShadingModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kcmAnimationDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="analyze\kcmShapeProperty.cpp">
+      <Filter>Analyze</Filter>
+    </ClCompile>
+    <ClCompile Include="analyze\kcmShapeStatistic.cpp">
+      <Filter>Analyze</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialogs\kcPropertyDlg.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Dim\kcmLengthDimension.cpp">
+      <Filter>Dim</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxToolPluginApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="QxToolPlugin.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmShapeFix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmShapeCheck.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmBasePlane.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmDispColor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmDispShadingModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kcmAnimationDemo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="analyze\kcmShapeProperty.h">
+      <Filter>Analyze</Filter>
+    </ClInclude>
+    <ClInclude Include="analyze\kcmShapeStatistic.h">
+      <Filter>Analyze</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialogs\kcPropertyDlg.h">
+      <Filter>Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="Dim\kcmLengthDimension.h">
+      <Filter>Dim</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QxToolPlugin.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\QxToolPlugin.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QxToolPlugin.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1A74BFE6-BACC-4E82-83C6-D2E756636C69}</ProjectGuid>
+    <RootNamespace>QxSolidPlugin</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\QxSolidPlugin\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\QxSolidPlugin\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\QxSolidPlugin\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(PlatformName)\$(Configuration)\Plugin\</OutDir>
+    <IntDir>$(SolutionDir)Obj\$(PlatformName)\$(Configuration)\QxSolidPlugin\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;.\make;.\edit;$(SolutionDir)OcctXLib\occinc;$(SolutionDir)OcctXLib\include;$(SolutionDir)OxModel\include;$(SolutionDir)OxSysLib\include;$(SolutionDir)OxSysLib\include\Gui;$(SolutionDir)OxSysLib\include\Input;$(MYOCCT720)\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\QxSolidPlugin.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(MYOCCT720)\win32\vc11\libd;$(SolutionDir)bin\$(PlatformName)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;OcctXLib.lib;OxModel.lib;OxSysLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;.\make;.\edit;.\tools;$(SolutionDir)QxBaseLib\occinc;$(SolutionDir)QxModelLib\include;$(SolutionDir)QxSysLib\include;$(SolutionDir)QxSysLib\include\Gui;$(SolutionDir)QxSysLib\include\Input;$(OCCT_ROOT_760)\inc;$(SolutionDir)QxBaseLib\include;$(SolutionDir)QxDataExchg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\QxSolidPlugin.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(OCCT_ROOT_760)\win64\vc14\libd;$(SolutionDir)bin\$(PlatformName)\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;QxBaseLib.lib;QxModelLib.lib;QxSysLib.lib;QxDataExchg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;$(SolutionDir)OcctXLib\occinc;$(SolutionDir)OcctXLib\include;$(SolutionDir)OxModel\include;$(SolutionDir)OxSysLib\include;$(MYOCCT720)\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\QxSolidPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;OcctXLib.lib;OxModel.lib;OxSysLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(MYOCCT720)\win32\vc11\lib;$(SolutionDir)bin\$(PlatformName)\$(Configuration)</AdditionalLibraryDirectories>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;.\make;.\edit;.\tools;$(SolutionDir)QxBaseLib\occinc;$(SolutionDir)QxModelLib\include;$(SolutionDir)QxSysLib\include;$(SolutionDir)QxSysLib\include\Gui;$(SolutionDir)QxSysLib\include\Input;$(OCCT_ROOT_760)\inc;$(SolutionDir)QxBaseLib\include;$(SolutionDir)QxDataExchg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\QxSolidPlugin.def</ModuleDefinitionFile>
+      <AdditionalDependencies>TKBRep.lib;TKBool.lib;TKCDF.lib;TKernel.lib;TKFeat.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;TKGeomAlgo.lib;TKGeomBase.lib;TKHLR.lib;TKMath.lib;TKOffset.lib;TKPrim.lib;TKService.lib;TKTopAlgo.lib;TKV3d.lib;TKXSBase.lib;TKBo.lib;TKMesh.lib;TKShHealing.lib;TKStep.lib;TKStepAttr.lib;TKStepBase.lib;TKIGES.lib;TKMeshVS.lib;TKSTL.lib;TKVRML.lib;TKOpenGL.lib;TKXCAF.lib;TKXDESTEP.lib;TKLCAF.lib;QxBaseLib.lib;QxModelLib.lib;QxSysLib.lib;QxDataExchg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OCCT_ROOT_760)\win64\vc14\lib;$(SolutionDir)bin\$(PlatformName)\$(Configuration)</AdditionalLibraryDirectories>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="edit\kcmSolidDeCompound.cpp" />
+    <ClCompile Include="edit\kcmSolidDraft.cpp" />
+    <ClCompile Include="edit\kcmSolidFillet.cpp" />
+    <ClCompile Include="edit\kcmSolidLoft.cpp" />
+    <ClCompile Include="edit\kcmSolidOffset.cpp" />
+    <ClCompile Include="edit\kcmSolidSewing.cpp" />
+    <ClCompile Include="edit\kcmSolidTrim.cpp" />
+    <ClCompile Include="edit\kcmThickSolid.cpp" />
+    <ClCompile Include="kcmSolidBoolean.cpp" />
+    <ClCompile Include="make\kcmSolidBox.cpp" />
+    <ClCompile Include="make\kcmSolidCone.cpp" />
+    <ClCompile Include="make\kcmSolidCylinder.cpp" />
+    <ClCompile Include="make\kcmSolidPipe.cpp" />
+    <ClCompile Include="make\kcmSolidPipeShell.cpp" />
+    <ClCompile Include="make\kcmSolidPrism.cpp" />
+    <ClCompile Include="make\kcmSolidRevol.cpp" />
+    <ClCompile Include="make\kcmSolidSphere.cpp" />
+    <ClCompile Include="QxSolidPlugin.cpp" />
+    <ClCompile Include="QxSolidPluginApp.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="tools\kcmOneFaceBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="edit\kcmSolidDeCompound.h" />
+    <ClInclude Include="edit\kcmSolidDraft.h" />
+    <ClInclude Include="edit\kcmSolidFillet.h" />
+    <ClInclude Include="edit\kcmSolidLoft.h" />
+    <ClInclude Include="edit\kcmSolidOffset.h" />
+    <ClInclude Include="edit\kcmSolidSewing.h" />
+    <ClInclude Include="edit\kcmSolidTrim.h" />
+    <ClInclude Include="edit\kcmThickSolid.h" />
+    <ClInclude Include="kcmSolidBoolean.h" />
+    <ClInclude Include="make\kcmSolidBox.h" />
+    <ClInclude Include="make\kcmSolidCone.h" />
+    <ClInclude Include="make\kcmSolidCylinder.h" />
+    <ClInclude Include="make\kcmSolidPipe.h" />
+    <ClInclude Include="make\kcmSolidPipeShell.h" />
+    <ClInclude Include="make\kcmSolidPrism.h" />
+    <ClInclude Include="make\kcmSolidRevol.h" />
+    <ClInclude Include="make\kcmSolidSphere.h" />
+    <ClInclude Include="QxSolidPlugin.h" />
+    <ClInclude Include="QxSolidPluginApp.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="tools\kcmOneFaceBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QxSolidPlugin.def" />
+    <None Include="res\QxSolidPlugin.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QxSolidPlugin.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
