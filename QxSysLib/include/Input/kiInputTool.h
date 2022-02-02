@@ -21,6 +21,7 @@
 #define KINPUT_CANCEL		3  //输入取消
 
 class kiCommand;
+class kcModel;
 class kuiMouseInput;
 class kuiKeyInput;
 class kiOptionItem;
@@ -54,34 +55,37 @@ public:
 	virtual int				End();
 
 	//状态管理
-	virtual bool				IsInputRunning() const;
-	virtual bool				IsInputDone() const;
+	virtual bool			IsInputRunning() const;
+	virtual bool			IsInputDone() const;
 	int						GetInputState() const;
-	void						SetInputState(int nState);
+	void					SetInputState(int nState);
 
 	// 子tool的回调函数,当子tool调用结束时,调用.
 	virtual int				OnSubInputFinished(kiInputTool *pTool);
 
 	Handle(AIS_InteractiveContext)	GetAISContext() const;
-	kcDocContext*				GetDocContext() const;
+	kcDocContext*			GetDocContext() const;
 
-	kiInputEdit*				GetInputEdit() const;
+	kiInputEdit*			GetInputEdit() const;
 
 	// 获取命令对应的V3d_View对象
 	const Handle(V3d_View)	GetCurrV3dView() const;
 
+	// 获取所在模型
+	kcModel*				GetModel() const;
+
 	// 获取当前基准面
-	kcBasePlane*				GetCurrentBasePlane() const;
+	kcBasePlane*			GetCurrentBasePlane() const;
 
 	kcSnapMngr*				GetSnapManager() const;
 
 protected:// 供派生类使用
 	//
-	kiOptionSet&				GetToolOptionSet() { return aToolOptionSet_; }
+	kiOptionSet&			GetToolOptionSet() { return aToolOptionSet_; }
 	// 获取当前使用的set对象，可能是传入的set，可能是自身的set
-	kiOptionSet*				GetCurOptionSet() const;
+	kiOptionSet*			GetCurOptionSet() const;
 	// 获取从参数传入的选项集
-	kiOptionSet*				GetInOptionSet() const;
+	kiOptionSet*			GetInOptionSet() const;
 
 protected:
 	//
@@ -89,18 +93,18 @@ protected:
 	virtual int				OnEnd();
 
 	// 获取提示字符串
-	virtual void				DoGetPromptText(std::string& str);
+	virtual void			DoGetPromptText(std::string& str);
 	// 出入文本完成，通常命令可以结束了
 	virtual int				DoTextInputFinished(const char *pInputText);
 
 protected:
 	// 当选项改变后的调用函数
-	virtual void				OnToolOptionChanged(kiOptionItem *pOptionItem);
-	virtual void				OnToolOptionClicked(kiOptionItem *pOptionItem);
+	virtual void			OnToolOptionChanged(kiOptionItem *pOptionItem);
+	virtual void			OnToolOptionClicked(kiOptionItem *pOptionItem);
 
 public://OptionCallBack
-	virtual void				OnOptionChanged(kiOptionItem *pOptionItem);
-	virtual void				OnOptionSelected(kiOptionItem *pOptionItem);
+	virtual void			OnOptionChanged(kiOptionItem *pOptionItem);
+	virtual void			OnOptionSelected(kiOptionItem *pOptionItem);
 
 public://kiInputEditCallBack接口实现
 	//InputEdit输入的回调函数
@@ -123,16 +127,16 @@ protected:
 
 public:
 	//鼠标消息
-	virtual void				OnLButtonDown(kuiMouseInput& mouseInput);
+	virtual void			OnLButtonDown(kuiMouseInput& mouseInput);
 	virtual int				OnLButtonUp(kuiMouseInput& mouseInput);
 	virtual int				OnLButtonDblClk(kuiMouseInput& mouseInput);
 	virtual int				OnMouseMove(kuiMouseInput& mouseInput);
-	virtual void				OnRButtonDown(kuiMouseInput& mouseInput);
+	virtual void			OnRButtonDown(kuiMouseInput& mouseInput);
 	virtual int				OnRButtonUp(kuiMouseInput& mouseInput);
 
 protected:
 	//计算当前点
-	virtual void				CalcInputPoint(kuiMouseInput& mouseInput,double point[3]);
+	virtual void			CalcInputPoint(kuiMouseInput& mouseInput,double point[3]);
 
 public:
 	//键盘消息
@@ -141,11 +145,11 @@ public:
 	virtual int				OnChar(kuiKeyInput& keyInput);
 
 protected:
-	void						DoInitialize();//必要的初始化
-	void						Reset();
+	void					DoInitialize();//必要的初始化
+	void					Reset();
 
-	virtual void				CombineOptionSet(kiOptionSet *pOptSet);
-	virtual void				SplitOptionSet(kiOptionSet *pOptSet);
+	virtual void			CombineOptionSet(kiOptionSet *pOptSet);
+	virtual void			SplitOptionSet(kiOptionSet *pOptSet);
 
 protected:
 	//输入的参数
@@ -173,14 +177,14 @@ private:
 	//工具的总的选项集,最终使用这个选项集，其他选项集可以并入到该选项集中。
 	kiOptionSet				aToolOptionSet_;
 	// 是否输工具是否有自己的选项
-	bool						bHasOwnOptions_;
+	bool					bHasOwnOptions_;
 	//构造函数传入的选择集
 	kiOptionSet				*pInOptionSet_; 
 	
 	//当前的选项集合，是一个指针，可以指向不同的对象
 	kiOptionSet				*pCurOptionSet_;
 	//运行时参数
-	kiOptionItem				*pCurrentOption_;//当前的item。
+	kiOptionItem			*pCurrentOption_;//当前的item。
 
 	Handle(AIS_InteractiveContext) hAISCtx_;//交互对象
 };

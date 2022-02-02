@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////
 // 标注命令。线性标注
-#ifndef _KCM_LENGTH_DIMENSION_H_
-#define _KCM_LENGTH_DIMENSION_H_
+#ifndef _KCM_ANGLE_DIMENSION_H_
+#define _KCM_ANGLE_DIMENSION_H_
 
 #include "kiCommand.h"
 
@@ -9,11 +9,11 @@ class kiInputEntityTool;
 class kiInputLength;
 class kcPreviewLine;
 
-class kcmLengthDimension : public kiCommand
+class kcmAngleDim : public kiCommand
 {
 public:
-	kcmLengthDimension(int subCmd);
-	virtual ~kcmLengthDimension(void);
+	kcmAngleDim(int subCmd);
+	virtual ~kcmAngleDim(void);
 
 	// 表明命令可以完成,主要和Apply函数结合使用.
 	virtual  BOOL			CanFinish();//命令是否可以完成
@@ -36,43 +36,23 @@ protected:
 	virtual int				OnMouseMove(kuiMouseInput& mouseInput);
 
 protected:
-	// 获取直线相关信息
-	bool					GetPickedLineInfo();
-
-	BOOL					CalcPointAndDir();
 	//
-	BOOL					BuildDimension();
-	bool					BuildLineLenDim();
+	bool					GetSelectedLine(bool bFirst);
+	//
+	bool					BuildDimension();
 
 protected:
-	kiOptionSet				*pOptionSet_;
-	kiOptionSet				*pOptionSet2_;
 	kiInputEntityTool		*pPickLineTool_;
-	kiInputLength			*pInputLenTool_;
-	kiInputEntityTool		*m_pPickFirstShape;
-	kiInputEntityTool		*m_pPickSecondShape;
-	kiInputLength			*m_pInputLength;
-	kiOptionSet				m_optionSet;
-	kiOptionEnum			*m_pTypeOpt;
-	int						m_nType;
-	double					m_dArrowSize;
-
-protected:
-	int						nSubCmd_; //子命令
+	kiInputEntityTool		*pPickLineTool2_;
+	kiOptionSet				*pOptionSet_;
 	double					dFlyout_;
 	double					dArrowLen_;
 	double					dFontHeight_;
 
+protected:
+	int						nSubCmd_; //子命令 0：2 line 
 	int						nState_;
-	gp_Pnt					aFirstPnt_, aSecondPnt_;
-	gp_Pln					aPlane_;
-	double					basePnt_[3], offDir_[3];
-
-	Handle(Geom_Plane)		m_aPlane;
-	kPoint3					m_aBasePoint;
-	kVector3				m_aOffDir;
-	kPoint3					m_aPnt1,m_aPnt2;
-	kcPreviewLine			*m_pPreviewLine;
+	TopoDS_Edge				aEdge1_, aEdge2_;
 };
 
 #endif

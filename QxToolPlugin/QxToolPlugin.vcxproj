@@ -210,7 +210,10 @@
     <ClCompile Include="analyze\kcmShapeProperty.cpp" />
     <ClCompile Include="analyze\kcmShapeStatistic.cpp" />
     <ClCompile Include="Dialogs\kcPropertyDlg.cpp" />
+    <ClCompile Include="Dim\kcmAngleDim.cpp" />
+    <ClCompile Include="Dim\kcmDiameterDim.cpp" />
     <ClCompile Include="Dim\kcmLengthDimension.cpp" />
+    <ClCompile Include="Dim\kcmRadiusDim.cpp" />
     <ClCompile Include="kcmAnimationDemo.cpp" />
     <ClCompile Include="kcmBasePlane.cpp" />
     <ClCompile Include="kcmDispColor.cpp" />
@@ -230,7 +233,10 @@
     <ClInclude Include="analyze\kcmShapeProperty.h" />
     <ClInclude Include="analyze\kcmShapeStatistic.h" />
     <ClInclude Include="Dialogs\kcPropertyDlg.h" />
+    <ClInclude Include="Dim\kcmAngleDim.h" />
+    <ClInclude Include="Dim\kcmDiameterDim.h" />
     <ClInclude Include="Dim\kcmLengthDimension.h" />
+    <ClInclude Include="Dim\kcmRadiusDim.h" />
     <ClInclude Include="kcmAnimationDemo.h" />
     <ClInclude Include="kcmBasePlane.h" />
     <ClInclude Include="kcmDispColor.h" />

@@ -66,6 +66,15 @@
     <ClCompile Include="Dim\kcmLengthDimension.cpp">
       <Filter>Dim</Filter>
     </ClCompile>
+    <ClCompile Include="Dim\kcmDiameterDim.cpp">
+      <Filter>Dim</Filter>
+    </ClCompile>
+    <ClCompile Include="Dim\kcmRadiusDim.cpp">
+      <Filter>Dim</Filter>
+    </ClCompile>
+    <ClCompile Include="Dim\kcmAngleDim.cpp">
+      <Filter>Dim</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -111,6 +120,15 @@
       <Filter>Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="Dim\kcmLengthDimension.h">
+      <Filter>Dim</Filter>
+    </ClInclude>
+    <ClInclude Include="Dim\kcmDiameterDim.h">
+      <Filter>Dim</Filter>
+    </ClInclude>
+    <ClInclude Include="Dim\kcmRadiusDim.h">
+      <Filter>Dim</Filter>
+    </ClInclude>
+    <ClInclude Include="Dim\kcmAngleDim.h">
       <Filter>Dim</Filter>
     </ClInclude>
   </ItemGroup>

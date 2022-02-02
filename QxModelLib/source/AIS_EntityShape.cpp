@@ -22,13 +22,13 @@ kcEntity*	AIS_EntityShape::GetEntity() const
 	return m_pEntity;
 }
 
-//从交互对象获取关联的实体对象
-kcEntity*	ksGetAisShapeEntity(const Handle(AIS_InteractiveObject)& aObj)
-{
-	kcEntity *pEntity = NULL;
-	if(!aObj.IsNull() && IS_AIS_ENTITYSHAPE(aObj)){
-		Handle(AIS_EntityShape) entShape = TO_AIS_ENTITYSHAPE(aObj);
-		pEntity = entShape->GetEntity();
-	}
-	return pEntity;
-}
+////从交互对象获取关联的实体对象
+//kcEntity*	ksGetAisShapeEntity(const Handle(AIS_InteractiveObject)& aObj)
+//{
+//	kcEntity *pEntity = NULL;
+//	if(!aObj.IsNull() && IS_AIS_ENTITYSHAPE(aObj)){
+//		Handle(AIS_EntityShape) entShape = TO_AIS_ENTITYSHAPE(aObj);
+//		pEntity = entShape->GetEntity();
+//	}
+//	return pEntity;
+//}

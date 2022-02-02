@@ -227,6 +227,18 @@ const Handle(V3d_View) kiInputTool::GetCurrV3dView() const
 	return aView;
 }
 
+// 获取所在模型
+kcModel* kiInputTool::GetModel() const
+{
+	if (m_pCommand) {
+		return m_pCommand->GetModel();
+	}
+	if (m_pParent) {
+		return m_pParent->GetModel();
+	}
+	return NULL;
+}
+
 // 获取当前基准面
 kcBasePlane* kiInputTool::GetCurrentBasePlane() const
 {

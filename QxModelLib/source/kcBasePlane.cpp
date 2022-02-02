@@ -88,6 +88,26 @@ const kVector3& kcBasePlane::GetZDirection() const
 	return _cs.Z();
 }
 
+//判断一点是否再基准面上
+bool kcBasePlane::IsOnPlane(const gp_Pnt &p)
+{
+	kPoint3 kp(p.X(), p.Y(), p.Z());
+	_cs.WCSToUCS(kp);
+	if (fabs(kp.z()) < K_DBL_EPS)
+		return true;
+	return false;
+}
+
+gp_Pln kcBasePlane::GetPlane()
+{
+	gp_Pln aPln;
+	gp_Ax2 ax2;
+	_cs.Get(ax2);
+	aPln.SetPosition(gp_Ax3(ax2));
+
+	return aPln;
+}
+
 // 屏幕窗口坐标转到空间点和线.
 // x,y:窗口坐标,vp:空间点 vdir:空间视向.
 //

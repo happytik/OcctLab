@@ -214,6 +214,10 @@ bool  kcHandleMgr::Initialize()
 	_solidHandleMap.Initialize();
 	_compHandleMap.Initialize();
 	_blockHandleMap.Initialize();
+	aDiamDimHandleMap_.Initialize();
+	aRadDimHandleMap_.Initialize();
+	aLenDimHandleMap_.Initialize();
+	aAngDimHandleMap_.Initialize();
 	_basePlaneHandleMap.Initialize();
 
 	InitHandleMapMap();
@@ -243,6 +247,14 @@ void  kcHandleMgr::InitHandleMapMap()
 	_handleMapArray.push_back(KCT_ENT_COMPOUND);
 	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_BLOCK,&_blockHandleMap));
 	_handleMapArray.push_back(KCT_ENT_BLOCK);
+	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_DIAMETER, &aDiamDimHandleMap_));
+	_handleMapArray.push_back(KCT_ENT_DIM_DIAMETER);
+	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_RADIUS, &aRadDimHandleMap_));
+	_handleMapArray.push_back(KCT_ENT_DIM_RADIUS);
+	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_LENGTH, &aLenDimHandleMap_));
+	_handleMapArray.push_back(KCT_ENT_DIM_LENGTH);
+	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_ANGLE, &aAngDimHandleMap_));
+	_handleMapArray.push_back(KCT_ENT_DIM_ANGLE);
 	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_LAYER,&_layerHandleMap));
 	_handleMapArray.push_back(KCT_ENT_LAYER);
 	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_BASE_PLANE,&_basePlaneHandleMap));

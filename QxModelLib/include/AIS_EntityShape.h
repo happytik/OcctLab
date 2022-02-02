@@ -30,7 +30,7 @@ public:
 };
 
 //辅助函数，获取EntityShape的entity
-QXLIB_API kcEntity*	ksGetAisShapeEntity(const Handle(AIS_InteractiveObject)& aObj);
+//QXLIB_API kcEntity*	ksGetAisShapeEntity(const Handle(AIS_InteractiveObject)& aObj);
 
 DEFINE_STANDARD_HANDLE(AIS_EntityShape,AIS_ColoredShape)
 

@@ -398,8 +398,9 @@ void  kiInputEntityTool::AddInitSelected(bool bAutoReturn)
 //
 bool  kiInputEntityTool::GetSelected(kuiMouseInput& mouseInput)
 {
+	kcModel *pModel = GetModel();
 	Handle(AIS_InteractiveContext) hAISCtx = GetAISContext();
-	if(hAISCtx.IsNull())
+	if(!pModel || hAISCtx.IsNull())
 		return false;
 
 	kcEntity *pEntity = NULL;
@@ -456,7 +457,7 @@ bool  kiInputEntityTool::GetSelected(kuiMouseInput& mouseInput)
 		
 		ityp = ksEntityType(aSType);
 		if(ityp & m_nTypeMask){//复合条件
-			pEntity = ksGetAisShapeEntity(hObj);
+			pEntity = pModel->GetEntity(hObj);
 			//新选择对象
 			kiSelEntity se(pEntity,hObj);
 			se.SetEntityOwner(aOwner);

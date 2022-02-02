@@ -31,6 +31,7 @@ typedef std::list<kcEntity *>  kcEntityList;
 typedef std::vector<kcEntity *> kcEntityArray;
 typedef std::list<kcLayer *>	kcLayerList;
 typedef std::list<kcBasePlane *>	kcBasePlaneList;
+typedef std::map<Handle(AIS_InteractiveObject), kcEntity *> kcAISObjEntMap;
 
 // 模型对象，记录和模型相关的所有信息
 //
@@ -64,10 +65,10 @@ public:
 	kcHandleMgr*			GetHandleMgr() const { return _pHandleMgr; }
 	kcShapeAttribMgr*		GetShapeAttribMgr() const { return _pShapeAttribMgr; }
 
-	kiSelSet*			GetGlobalSelSet() const;
+	kiSelSet*				GetGlobalSelSet() const;
 
 	void					SetSnapManager(kcSnapMngr *pMngr);
-	kcSnapMngr*			GetSnapManager() const;
+	kcSnapMngr*				GetSnapManager() const;
 
 public://图层管理
 	//创建和删除图层
@@ -80,8 +81,8 @@ public://图层管理
 	BOOL					SetCurrLayer(kcLayer *pLayer);
 	kcLayer*				GetCurrLayer() const;
 
-	const kcLayerList&	GetLayerList() const;
-	int					GetLayerCount() const;
+	const kcLayerList&		GetLayerList() const;
+	int						GetLayerCount() const;
 
 public:
 	//添加和删除图元
@@ -89,8 +90,8 @@ public:
 	BOOL					AddEntity(const std::vector<kcEntity *>& aEnt,BOOL bUpdateView = FALSE);
 	BOOL					AddEntity(kcEntity *pEntity,kcLayer *pLayer,BOOL bUpdateView = FALSE);
 	BOOL					DelEntity(kcEntity *pEntity,BOOL bUpdateView = FALSE);
-	kcEntity*			DelEntity(Handle(AIS_InteractiveObject)& aObj,BOOL bUpdateView = FALSE);
-	kcEntity*			GetEntity(Handle(AIS_InteractiveObject)& aObj);
+	kcEntity*				DelEntity(const Handle(AIS_InteractiveObject)& aObj,BOOL bUpdateView = FALSE);
+	kcEntity*				GetEntity(const Handle(AIS_InteractiveObject)& aObj);
 
 	void					GetAllEntity(kcEntityList& entList);
 	void					GetAllEntity(int entType,kcEntityList& entList);
@@ -124,7 +125,7 @@ public:
 	BOOL					EndUndo();
 
 public:
-	kiUndoMgr*			GetUndoMgr();
+	kiUndoMgr*				GetUndoMgr();
 
 	//计算所有捕捉点
 	BOOL					CalcSnapPoint(kiSnapMngr *pSnapMgr);
@@ -146,19 +147,20 @@ protected://图层保存的数据
 	kcHandleMgr					*_pHandleMgr;//handle管理
 	kcLayerList					_layerList;//保存所有的图层信息
 	kcLayer						*_pCurLayer;//当前图层
+	kcAISObjEntMap				aObjEntMap_; //这里主要记录非AIS_EntityShape的对应关系
 
-	kcShapeAttribMgr				*_pShapeAttribMgr;//对象属性管理
+	kcShapeAttribMgr			*_pShapeAttribMgr;//对象属性管理
 
 	kcBasePlaneList				_basePlaneList;//基准面列表
 	kcBasePlane					*_pCurBasePlane;//当前获得的基准面
 
 protected://Undo管理
 	kiUndoMgr					*_pUndoMgr;//undo管理器
-	kiNewDelUndoItem				*_pCurrUndoItem;//当前的UndoItem。
+	kiNewDelUndoItem			*_pCurrUndoItem;//当前的UndoItem。
 
 protected:
 	//全局选择集管理对象,选择集是对AIS_CTX对象的封装，目前保持和其的一一对应关系
-	kiSelSet						*pGlobalSelSet_;
+	kiSelSet					*pGlobalSelSet_;
 
 protected:
 	// 这里记录Doc对应的Context对象。
@@ -168,7 +170,7 @@ protected:
 	kcSnapMngr					*pSnapMngr_;// 这里记录的是外部管理器的指针
 
 protected:
-	UINT							dwFileVersion_;//读入文件的版本号，用于模型从文件中读取使用
+	UINT						dwFileVersion_;//读入文件的版本号，用于模型从文件中读取使用
 };
 
 inline kiUndoMgr*	kcModel::GetUndoMgr()

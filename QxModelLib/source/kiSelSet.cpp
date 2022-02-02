@@ -192,7 +192,7 @@ bool  kiSelSet::AddSelected(const Handle(AIS_InteractiveObject)& aisObj,BOOL bUp
 	}
 
 	//添加到列表中
-	kcEntity *pEntity = ksGetAisShapeEntity(aisObj);
+	kcEntity *pEntity = pModel_->GetEntity(aisObj);
 	if(pEntity){
 		kiSelEntityList::iterator it = m_selEntList.begin();
 		for(;it != m_selEntList.end();it ++){
@@ -219,7 +219,7 @@ bool	kiSelSet::RemoveSelected(const Handle(AIS_InteractiveObject)& aisObj,BOOL b
 	}
 
 	//从list中删除
-	kcEntity *pEntity = ksGetAisShapeEntity(aisObj);
+	kcEntity *pEntity = pModel_->GetEntity(aisObj);
 	if(pEntity){
 		kiSelEntityList::iterator it = m_selEntList.begin();
 		for(;it != m_selEntList.end();it ++){

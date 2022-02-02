@@ -78,6 +78,10 @@ protected:
 	kcHandleMap			_solidHandleMap;
 	kcHandleMap			_compHandleMap;
 	kcHandleMap			_blockHandleMap;
+	kcHandleMap			aDiamDimHandleMap_;
+	kcHandleMap			aRadDimHandleMap_;
+	kcHandleMap			aLenDimHandleMap_;
+	kcHandleMap			aAngDimHandleMap_;
 	kcHandleMap			_basePlaneHandleMap;
 
 	stdHandleMapMap		_handleMapMap;

@@ -22,24 +22,31 @@ public:
 
 	//根据一个坐标系创建
 	int						Create(kvCoordSystem& cs,kcModel *pModel,const char *pszName = NULL);
-	void						Destroy();
+	void					Destroy();
 
 public:
-	void						SetActive(bool bActive);//是否设置为活动的基准面
+	void					SetActive(bool bActive);//是否设置为活动的基准面
 
 	// 获取内部的Grid
 	kvGrid*					GetGrid() const { return _pGrid; }
-	Handle(V3d_View)			GetV3dView() const { return _hView; }
+	Handle(V3d_View)		GetV3dView() const { return _hView; }
 	kvCoordSystem*			GetCoordSystem() { return &_cs; }
 	int						GetCoordSystem(kvCoordSystem& cs);
 	const kVector3&			GetZDirection() const;
 
-	void						SetDefaultView();//设定默认实体，目前是上视图。
+	void					SetDefaultView();//设定默认实体，目前是上视图。
 
 	int						GetHandle() const { return _nHandle;}
-	void						SetName(const char *szName);
+	void					SetName(const char *szName);
 	std::string				GetName() const;
-	bool						HasName() const;
+	bool					HasName() const;
+
+public:
+	//判断一点是否再基准面上
+	bool					IsOnPlane(const gp_Pnt &p);
+
+	//
+	gp_Pln					GetPlane();
 
 public:
 	// 屏幕窗口坐标转到WCS空间点和线.

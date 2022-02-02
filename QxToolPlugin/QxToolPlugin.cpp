@@ -10,6 +10,9 @@
 #include "kcmShapeStatistic.h"
 #include "kcmAnimationDemo.h"
 #include "kcmLengthDimension.h"
+#include "kcmDiameterDim.h"
+#include "kcmRadiusDim.h"
+#include "kcmAngleDim.h"
 #include "QxToolPlugin.h"
 
 //派生一个自己的类
@@ -86,6 +89,9 @@ enum eCmdPluginCmdType{
 	CMD_FACE_PROPERTY,
 	CMD_ANIMA_DEMO,
 	CMD_LENGTH_DIM,
+	CMD_DIAMETER_DIM,
+	CMD_RADIUS_DIM,
+	CMD_ANGGLE_DIM_TWO_LINE,
 };
 
 // 插件初始化和释放
@@ -119,6 +125,9 @@ bool QxToolPluginImpl::Initialize()
 	AddCommandItem((int)CMD_ANIMA_DEMO,pszToolMenu,"动画演示(&T)",KUI_MENU_BEFORE_SEP);
 
 	AddCommandItem((int)CMD_LENGTH_DIM,pszToolMenu,"标注","线性标注(&L)");
+	AddCommandItem((int)CMD_DIAMETER_DIM,pszToolMenu, "标注", "直径标注(&D)");
+	AddCommandItem((int)CMD_RADIUS_DIM, pszToolMenu, "标注", "半径标注(&R)");
+	AddCommandItem((int)CMD_ANGGLE_DIM_TWO_LINE, pszToolMenu, "标注", "两线角度标注(&R)");
 
 	return true;
 }
@@ -147,7 +156,10 @@ kiCommand* QxToolPluginImpl::DoCreateCommand(int nLocalID)
 	case CMD_EDGE_PROPERTY:	pCommand = new kcmEdgeProperty; break;
 	case CMD_FACE_PROPERTY:	pCommand = new kcmFaceProperty; break;
 	case CMD_ANIMA_DEMO:	pCommand = new kcmAnimationDemo; break;
-	case CMD_LENGTH_DIM:	pCommand = new kcmLengthDimension; break;
+	case CMD_LENGTH_DIM:	pCommand = new kcmLengthDimension(0); break;
+	case CMD_DIAMETER_DIM:	pCommand = new kcmDiameterDim; break;
+	case CMD_RADIUS_DIM:	pCommand = new kcmRadiusDim; break;
+	case CMD_ANGGLE_DIM_TWO_LINE:	pCommand = new kcmAngleDim(0); break;
 	default:
 		break;
 	}

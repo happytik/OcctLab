@@ -254,7 +254,7 @@ BOOL	kcModel::SetCurrLayer(const char* szLayerName)
 	return SetCurrLayer(pLayer);
 }
 
-BOOL	kcModel::SetCurrLayer(kcLayer *pLayer)
+BOOL kcModel::SetCurrLayer(kcLayer *pLayer)
 {
 	if(!pLayer)
 		return FALSE;
@@ -271,7 +271,7 @@ BOOL	kcModel::SetCurrLayer(kcLayer *pLayer)
 	return TRUE;
 }
 
-kcLayer*	kcModel::GetCurrLayer() const
+kcLayer* kcModel::GetCurrLayer() const
 {
 	return _pCurLayer;
 }
@@ -295,7 +295,7 @@ BOOL kcModel::AddEntity(kcEntity *pEntity,BOOL bUpdateView)
 	return AddEntity(pEntity,_pCurLayer,bUpdateView);
 }
 
-BOOL	kcModel::AddEntity(const std::vector<kcEntity *>& aEnt,BOOL bUpdateView)
+BOOL kcModel::AddEntity(const std::vector<kcEntity *>& aEnt,BOOL bUpdateView)
 {
 	if(!_pCurLayer)
 		return FALSE;
@@ -308,7 +308,7 @@ BOOL	kcModel::AddEntity(const std::vector<kcEntity *>& aEnt,BOOL bUpdateView)
 }
 
 // 实际的添加和显示实现
-BOOL	kcModel::AddEntity(kcEntity *pEntity,kcLayer *pLayer,BOOL bUpdateView)
+BOOL kcModel::AddEntity(kcEntity *pEntity,kcLayer *pLayer,BOOL bUpdateView)
 {
 	if(!pEntity || !pLayer || !pEntity->IsValid())
 		return FALSE;
@@ -334,6 +334,13 @@ BOOL	kcModel::AddEntity(kcEntity *pEntity,kcLayer *pLayer,BOOL bUpdateView)
 		return FALSE;
 	}
 
+	//记录对应关系
+	if (pEntity->IsDimension()) {
+		Handle(AIS_InteractiveObject) aObj = pEntity->DisplayObj();
+		ASSERT(aObjEntMap_.find(aObj) == aObjEntMap_.end());
+		aObjEntMap_.insert(kcAISObjEntMap::value_type(aObj, pEntity));
+	}
+
 	//至此，添加成功,如果存在undo过程，记录。
 	if(_pCurrUndoItem){
 		_pCurrUndoItem->AddNewEntity(pEntity);
@@ -342,7 +349,7 @@ BOOL	kcModel::AddEntity(kcEntity *pEntity,kcLayer *pLayer,BOOL bUpdateView)
 	return TRUE;
 }
 
-BOOL	kcModel::DelEntity(kcEntity *pEntity,BOOL bUpdateView)
+BOOL kcModel::DelEntity(kcEntity *pEntity,BOOL bUpdateView)
 {
 	if(!pEntity || !pEntity->IsValid())
 		return FALSE;
@@ -355,9 +362,14 @@ BOOL	kcModel::DelEntity(kcEntity *pEntity,BOOL bUpdateView)
 	}
 
 	pLayer->DelEntity(pEntity);
+	//删除对应关系
+	if (pEntity->IsDimension()) {
+		Handle(AIS_InteractiveObject) aObj = pEntity->DisplayObj();
+		aObjEntMap_.erase(aObj);
+	}
 	// 从显示中删除
 	pEntity->Display(false,bUpdateView);
-
+		
 	//是否undo过程
 	if(_pCurrUndoItem){
 		_pCurrUndoItem->AddDelEntity(pEntity);
@@ -366,7 +378,7 @@ BOOL	kcModel::DelEntity(kcEntity *pEntity,BOOL bUpdateView)
 	return TRUE;
 }
 
-kcEntity*	kcModel::DelEntity(Handle(AIS_InteractiveObject)& aObj,BOOL bUpdateView)
+kcEntity*	kcModel::DelEntity(const Handle(AIS_InteractiveObject)& aObj,BOOL bUpdateView)
 {
 	kcEntity *pEntity = GetEntity(aObj);
 	if(pEntity == NULL)
@@ -379,18 +391,24 @@ kcEntity*	kcModel::DelEntity(Handle(AIS_InteractiveObject)& aObj,BOOL bUpdateVie
 
 // 根据显示对象，查找对应的entity.
 //
-kcEntity*	kcModel::GetEntity(Handle(AIS_InteractiveObject)& aObj)
+kcEntity*	kcModel::GetEntity(const Handle(AIS_InteractiveObject)& aObj)
 {
-	return ksGetAisShapeEntity(aObj);
-}
+	if (aObj.IsNull()) return NULL;
 
-//BOOL	kcModel::SetAISContext(const Handle(AIS_InteractiveContext)& aCtx)
-//{
-//	if(aCtx.IsNull())
-//		return FALSE;
-//	_hAISContext = aCtx;
-//	return TRUE;
-//}
+	kcEntity *pEntity = NULL;
+	//
+	if (IS_AIS_ENTITYSHAPE(aObj)) {
+		Handle(AIS_EntityShape) entShape = TO_AIS_ENTITYSHAPE(aObj);
+		pEntity = entShape->GetEntity();
+	}
+	else {
+		kcAISObjEntMap::iterator ite = aObjEntMap_.find(aObj);
+		if (ite != aObjEntMap_.end()) {
+			pEntity = (*ite).second;
+		}
+	}
+	return pEntity;
+}
 
 BOOL  kcModel::SetActiveView(const Handle(V3d_View)& aView)
 {
@@ -436,8 +454,7 @@ BOOL	kcModel::CalcSnapPoint(kiSnapMngr *pSnapMgr)
 
 	kcLayer *pLayer = NULL;
 	kcLayerList::iterator it = _layerList.begin();
-	for(;it != _layerList.end();it ++)
-	{
+	for(;it != _layerList.end();it ++){
 		(*it)->CalcSnapPoint(pSnapMgr);
 	}
 	return TRUE;

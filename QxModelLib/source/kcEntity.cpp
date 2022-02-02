@@ -6,6 +6,10 @@
 #include <Aspect_TypeOfLine.hxx>
 #include <Prs3d_Drawer.hxx>
 #include <Prs3d_LineAspect.hxx>
+#include <PrsDim_DiameterDimension.hxx>
+#include <PrsDim_RadiusDimension.hxx>
+#include <PrsDim_LengthDimension.hxx>
+#include <PrsDim_AngleDimension.hxx>
 #include "kcModel.h"
 #include "kcLayer.h"
 #include "kcHandleMgr.h"
@@ -220,8 +224,8 @@ BOOL  kcEntity::Display(bool bShow,BOOL bUpdateView)
 	// 不显示对象,目前仅仅将显示数据从CTx中去除,从而不显示
 	// 没用对显示数据本身进行特别的处理.
 	if(!bShow){
-		if(!_hAISObj.IsNull() && IsDisplayed()){
-			_hAISContext->Erase(_hAISObj,bUpdateView ? true : false);
+		if(!hAISObject_.IsNull() && IsDisplayed()){
+			_hAISContext->Erase(hAISObject_,bUpdateView ? true : false);
 		}
 		bValid_ = false;
 		return TRUE;
@@ -229,11 +233,13 @@ BOOL  kcEntity::Display(bool bShow,BOOL bUpdateView)
 
 	// 是否对象为空
 	BOOL bDone = FALSE;
-	if(_hAISObj.IsNull()){
+	if(hAISObject_.IsNull()){
 		bDone = BuildDisplayObj();
 		// 第一次显示对象
 		if(bDone){
-			_hAISObj->SetEntity(this);//显示对象和entity对象建立关联
+			if (!hAISEntObj_.IsNull()) {
+				hAISEntObj_->SetEntity(this);//显示对象和entity对象建立关联
+			}
 			DoDisplay(bUpdateView);
 		}
 	}else{
@@ -269,7 +275,7 @@ BOOL  kcEntity::Display(bool bShow,BOOL bUpdateView)
 BOOL	kcEntity::BuildDisplayObj()
 {
 	ASSERT(IsValid());
-	ASSERT(_hAISObj.IsNull());
+	ASSERT(hAISObject_.IsNull());
 
 	if(!DoBuildDisplayObj())
 		return FALSE;
@@ -284,7 +290,7 @@ BOOL	kcEntity::BuildDisplayObj()
 //
 BOOL	kcEntity::UpdateDisplayObj(BOOL bUpdateView)
 {
-	ASSERT(!_hAISObj.IsNull());
+	ASSERT(!hAISObject_.IsNull());
 
 	//如果显示,先隐藏
 	BOOL bDisplayed = IsDisplayed();
@@ -292,7 +298,7 @@ BOOL	kcEntity::UpdateDisplayObj(BOOL bUpdateView)
 		Display(FALSE,FALSE);
 
 	//释放旧的。
-	if(!_hAISObj.IsNull()){
+	if(!hAISObject_.IsNull()){
 		DestroyDisplayObj();
 	}
 
@@ -314,9 +320,11 @@ BOOL  kcEntity::DoBuildDisplayObj()
 	if(aShape_.IsNull())
 		return FALSE;
 
-	_hAISObj = new AIS_EntityShape(aShape_);
-	if(!_hAISObj.IsNull()){
-		_hAISObj->SetEntity(this);
+	hAISEntObj_ = new AIS_EntityShape(aShape_);
+	if(!hAISEntObj_.IsNull()){
+		hAISEntObj_->SetEntity(this);
+		//
+		hAISObject_ = hAISEntObj_;
 
 		return TRUE;
 	}
@@ -329,10 +337,10 @@ BOOL  kcEntity::DoBuildDisplayObj()
 //
 BOOL  kcEntity::DoDisplay(BOOL bUpdateView)
 {
-	if(!_hAISObj.IsNull()){
+	if(!hAISObject_.IsNull()){
 		//设置属性
 		DoSetDisplayAttribs();
-		_hAISContext->Display(_hAISObj,bUpdateView ? true : false);
+		_hAISContext->Display(hAISObject_,bUpdateView ? true : false);
 	}
 
 	return TRUE;
@@ -341,16 +349,16 @@ BOOL  kcEntity::DoDisplay(BOOL bUpdateView)
 // 设置显示对象属性
 void	kcEntity::DoSetDisplayAttribs()
 {
-	_hAISContext->SetColor(_hAISObj,Quantity_Color(m_color[0],m_color[1],m_color[2],Quantity_TOC_RGB),Standard_False);
+	_hAISContext->SetColor(hAISObject_,Quantity_Color(m_color[0],m_color[1],m_color[2],Quantity_TOC_RGB),Standard_False);
 
 	if(fabs(m_dLineWidth - 1.0) > KDBL_MIN)
-		_hAISContext->SetWidth(_hAISObj,m_dLineWidth,Standard_False);
+		_hAISContext->SetWidth(hAISObject_,m_dLineWidth,Standard_False);
 	//线型?
 	if(m_dTransparency < 1.0)//有透明值
-		_hAISContext->SetTransparency(_hAISObj,m_dTransparency,Standard_False);
+		_hAISContext->SetTransparency(hAISObject_,m_dTransparency,Standard_False);
 	//显示模式
-	if(!_hAISObj.IsNull() && _hAISObj->AcceptDisplayMode(m_nDisplayModel)){
-		_hAISContext->SetDisplayMode(_hAISObj,m_nDisplayModel,Standard_False);
+	if(!hAISObject_.IsNull() && hAISObject_->AcceptDisplayMode(m_nDisplayModel)){
+		_hAISContext->SetDisplayMode(hAISObject_,m_nDisplayModel,Standard_False);
 	}
 
 	DoSetFaceDisplayAttribs();
@@ -362,6 +370,7 @@ void	kcEntity::DoSetDisplayAttribs()
 void  kcEntity::SetFaceColorAttribs()
 {
 	ASSERT(_pModel);
+	ASSERT(!hAISEntObj_.IsNull());
 	if(aShape_.IsNull()){
 		return;
 	}
@@ -372,7 +381,7 @@ void  kcEntity::SetFaceColorAttribs()
 		const TopoDS_Shape &aS = exp.Current();
 		// 为单独的face设定颜色
 		if(_pModel->FindShapeAttrib(aS,aCol)){
-			_hAISObj->SetCustomColor(aS,aCol);
+			hAISEntObj_->SetCustomColor(aS,aCol);
 		}
 	}
 }
@@ -381,24 +390,25 @@ void  kcEntity::SetFaceColorAttribs()
 //
 BOOL  kcEntity::IsDisplayed() const
 {
-	if(_hAISObj.IsNull()) return FALSE;
-	return _hAISContext->IsDisplayed(_hAISObj);
+	if(hAISObject_.IsNull()) return FALSE;
+	return _hAISContext->IsDisplayed(hAISObject_);
 }
 
 // 销毁显示对象.
 //
 BOOL	kcEntity::DestroyDisplayObj()
 {
-	if(!_hAISObj.IsNull()){
+	if(!hAISObject_.IsNull()){
 		// 先隐藏.
-		if(_hAISContext->IsDisplayed(_hAISObj))
-			_hAISContext->Erase(_hAISObj,Standard_False);
+		if(_hAISContext->IsDisplayed(hAISObject_))
+			_hAISContext->Erase(hAISObject_,Standard_False);
 
 		//释放显示对象
-		_hAISContext->Remove(_hAISObj,Standard_False);
+		_hAISContext->Remove(hAISObject_,Standard_False);
 
-		KTRACE("\n ais obj refcnt = %d.",_hAISObj->GetRefCount());
-		_hAISObj.Nullify();
+		KTRACE("\n ais obj refcnt = %d.", hAISObject_->GetRefCount());
+		hAISObject_.Nullify();
+		hAISEntObj_.Nullify();
 	}
 
 	return TRUE;
@@ -406,7 +416,7 @@ BOOL	kcEntity::DestroyDisplayObj()
 
 BOOL	kcEntity::HasDispalyObj() const
 {
-	if(_hAISObj.IsNull())
+	if(hAISObject_.IsNull())
 		return FALSE;
 
 	return TRUE;
@@ -455,9 +465,9 @@ void	kcEntity::SetColor(double r,double g,double b,BOOL bUpdate)
 	K_ROUND(b,0.0,1.0);
 	m_color.set(r,g,b);
 	
-	if(!_hAISContext.IsNull() && !_hAISObj.IsNull() && IsDisplayed()){
+	if(!_hAISContext.IsNull() && !hAISObject_.IsNull() && IsDisplayed()){
 		Quantity_Color col(r,g,b,Quantity_TOC_RGB);
-		_hAISContext->SetColor(_hAISObj,col,bUpdate ? true : false);
+		_hAISContext->SetColor(hAISObject_,col,bUpdate ? true : false);
 	}
 }
 
@@ -487,8 +497,8 @@ bool kcEntity::SetLineStyle(eLineStyle linStyle,BOOL bUpdate)
 
 	m_eLineStyle = linStyle;
 
-	if(!_hAISContext.IsNull() && !_hAISObj.IsNull() && IsDisplayed()){
-		Handle(Prs3d_Drawer) aDrawer = _hAISObj->Attributes();
+	if(!_hAISContext.IsNull() && !hAISObject_.IsNull() && IsDisplayed()){
+		Handle(Prs3d_Drawer) aDrawer = hAISObject_->Attributes();
 		Aspect_TypeOfLine aType = (Aspect_TypeOfLine)m_eLineStyle;
 		aDrawer->WireAspect()->SetTypeOfLine(aType);
 	}
@@ -503,8 +513,8 @@ bool	kcEntity::SetLineWidth(double width,BOOL bUpdate)
 		return true;
 
 	m_dLineWidth = width;
-	if(!_hAISContext.IsNull() && !_hAISObj.IsNull() && IsDisplayed()){
-		_hAISContext->SetWidth(_hAISObj,width,bUpdate ? true : false);
+	if(!_hAISContext.IsNull() && !hAISObject_.IsNull() && IsDisplayed()){
+		_hAISContext->SetWidth(hAISObject_,width,bUpdate ? true : false);
 	}
 
 	return true;
@@ -517,8 +527,8 @@ bool	kcEntity::SetTransparency(double transp,BOOL bUpdate)
 		return true;
 
 	m_dTransparency = transp;
-	if(!_hAISContext.IsNull() && !_hAISObj.IsNull() && IsDisplayed()){
-		_hAISContext->SetTransparency(_hAISObj,transp,bUpdate ? true : false);
+	if(!_hAISContext.IsNull() && !hAISObject_.IsNull() && IsDisplayed()){
+		_hAISContext->SetTransparency(hAISObject_,transp,bUpdate ? true : false);
 	}
 
 	return true;
@@ -530,8 +540,8 @@ bool	kcEntity::SetDisplayModel(int model,BOOL bUpdate)
 		return true;
 
 	m_nDisplayModel = model;
-	if(!_hAISContext.IsNull() && !_hAISObj.IsNull() && IsDisplayed()){
-		_hAISContext->SetDisplayMode(_hAISObj,model,bUpdate ? true : false);
+	if(!_hAISContext.IsNull() && !hAISObject_.IsNull() && IsDisplayed()){
+		_hAISContext->SetDisplayMode(hAISObject_,model,bUpdate ? true : false);
 	}
 
 	return true;
@@ -1267,9 +1277,10 @@ BOOL  kcBlockEntity::DoBuildDisplayObj()
 	if(aComp_.IsNull())
 		return FALSE;
 
-	_hAISObj = new AIS_EntityShape(aComp_);
-	if(!_hAISObj.IsNull()){
-		_hAISObj->SetEntity(this);
+	hAISEntObj_ = new AIS_EntityShape(aComp_);
+	if(!hAISEntObj_.IsNull()){
+		hAISEntObj_->SetEntity(this);
+		hAISObject_ = hAISEntObj_;
 		//需要设置颜色等属性信息
 		//需要考虑到递归的处理
 		kcEntityList::iterator ite = aEntList_.begin();
@@ -1302,7 +1313,7 @@ void kcBlockEntity::DoSetEntityAttribs(kcEntity *pEnt)
 		TopoDS_Shape aS = pEnt->GetShape();
 		// 颜色
 		Quantity_Color aColor = pEnt->GetColor();
-		_hAISObj->SetCustomColor(aS,aColor);
+		hAISEntObj_->SetCustomColor(aS,aColor);
 		// TODO:其他属性
 	}
 }
@@ -1325,7 +1336,10 @@ kcEntity* kcBlockEntity::Clone()
 
 kcDimEntity::kcDimEntity()
 {
-	}
+	dFlyout_ = 10.0;
+	dArrowLen_ = 2.0;
+	dFontHeight_ = 16.0;
+}
 
 kcDimEntity::~kcDimEntity()
 {
@@ -1337,17 +1351,78 @@ void kcDimEntity::SetFlyout(double dValue)
 	SetModified(TRUE);
 }
 
+void kcDimEntity::SetArrowLength(double len)
+{
+	dArrowLen_ = len;
+	SetModified(TRUE);
+}
+
+void kcDimEntity::SetFontHeight(double h)
+{
+	dFontHeight_ = h;
+	SetModified(TRUE);
+}
+
+void kcDimEntity::DoSetDisplayAttribs()
+{
+	kcEntity::DoSetDisplayAttribs();
+	if (hAISObject_.IsNull())
+		return;
+
+	Handle(PrsDim_Dimension) aDim = Handle(PrsDim_Dimension)::DownCast(hAISObject_);
+	Handle(Prs3d_DimensionAspect) aspt = aDim->DimensionAspect();
+	aspt->ArrowAspect()->SetLength(dArrowLen_);
+	aspt->TextAspect()->SetHeight(dFontHeight_);
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 
 kcLengthDimEntity::kcLengthDimEntity()
 {
 	_entType = KCT_ENT_DIM_LENGTH;
-	_sTypeName = "LengthDim";
+	_sTypeName = "LenDim";
 }
 
 kcLengthDimEntity::~kcLengthDimEntity()
 {
+}
+
+bool kcLengthDimEntity::Initialize(const gp_Pnt &p1, const gp_Pnt &p2, const gp_Pln &pln)
+{
+	if (p1.Distance(p2) < K_DIST_TOL) {
+		ASSERT(FALSE);
+		return false;
+	}
+	
+	aFirstPnt_ = p1;
+	aSecondPnt_ = p2;
+	aPlane_ = pln;
+	
+	SetModified(TRUE);
+	SetValid(TRUE);
+
+	return true;
+}
+
+// 根据记录的数据和属性，生成一个ais显示对象
+// 显示对象记录在m_aisObj中
+BOOL kcLengthDimEntity::DoBuildDisplayObj()
+{
+	Handle(PrsDim_LengthDimension) aDim;
+	aDim = new PrsDim_LengthDimension(aFirstPnt_, aSecondPnt_, aPlane_);
+	if (!aDim.IsNull()) {
+		aDim->SetFlyout(dFlyout_);
+		// 这里的Drawer可能会被后面设置color时，被Context替换。
+		Handle(Prs3d_DimensionAspect) aspt = aDim->DimensionAspect();
+		aspt->ArrowAspect()->SetLength(dArrowLen_);
+		aspt->TextAspect()->SetHeight(dFontHeight_);
+
+		hAISObject_ = aDim;
+		return TRUE;
+	}
+	return FALSE;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1356,11 +1431,38 @@ kcLengthDimEntity::~kcLengthDimEntity()
 kcDiameterDimEntity::kcDiameterDimEntity()
 {
 	_entType = KCT_ENT_DIM_DIAMETER;
-	_sTypeName = "DiameterDim";
+	_sTypeName = "DiamDim";
 }
 
 kcDiameterDimEntity::~kcDiameterDimEntity()
 {
+}
+
+bool kcDiameterDimEntity::Initialize(const gp_Circ &aCirc)
+{
+	aCirc_ = aCirc;
+	SetModified(TRUE);
+	SetValid(TRUE);
+
+	return true;
+}
+
+BOOL kcDiameterDimEntity::DoBuildDisplayObj()
+{
+	Handle(PrsDim_DiameterDimension) aDiaDim;
+	aDiaDim = new PrsDim_DiameterDimension(aCirc_);
+	if (!aDiaDim.IsNull()) {
+		aDiaDim->SetFlyout(dFlyout_);
+		//
+		Handle(Prs3d_DimensionAspect) aspt = aDiaDim->DimensionAspect();
+		aspt->ArrowAspect()->SetLength(dArrowLen_);
+		aspt->TextAspect()->SetHeight(dFontHeight_);
+
+		hAISObject_ = aDiaDim;
+
+		return TRUE;
+	}
+	return FALSE;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1369,10 +1471,99 @@ kcDiameterDimEntity::~kcDiameterDimEntity()
 kcRadiusDimEntity::kcRadiusDimEntity()
 {
 	_entType = KCT_ENT_DIM_RADIUS;
-	_sTypeName = "RadiusDim";
+	_sTypeName = "RadDim";
 }
 
 kcRadiusDimEntity::~kcRadiusDimEntity()
 {
 }
 
+bool kcRadiusDimEntity::Initialize(const gp_Circ &aCirc, const gp_Pnt& pnt)
+{
+	aCirc_ = aCirc;
+	aAnchorPnt_ = pnt;
+	SetModified(TRUE);
+	SetValid(TRUE);
+	return true;
+}
+
+// 根据记录的数据和属性，生成一个ais显示对象
+// 显示对象记录在m_aisObj中
+BOOL kcRadiusDimEntity::DoBuildDisplayObj()
+{
+	Handle(PrsDim_RadiusDimension) aDim;
+	aDim = new PrsDim_RadiusDimension(aCirc_,aAnchorPnt_);
+	if (!aDim.IsNull()) {
+		aDim->SetFlyout(dFlyout_);
+		//
+		Handle(Prs3d_DimensionAspect) aspt = aDim->DimensionAspect();
+		aspt->ArrowAspect()->SetLength(dArrowLen_);
+		aspt->TextAspect()->SetHeight(dFontHeight_);
+
+		hAISObject_ = aDim;
+
+		return TRUE;
+	}
+	return FALSE;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//
+
+kcAngleDimEntity::kcAngleDimEntity()
+{
+	_entType = KCT_ENT_DIM_ANGLE;
+	_sTypeName = "AngDim";
+}
+
+kcAngleDimEntity::~kcAngleDimEntity()
+{
+
+}
+
+//
+bool kcAngleDimEntity::Initialize(const TopoDS_Edge &aE1, const TopoDS_Edge &aE2)
+{
+	if (aE1.IsNull() || aE2.IsNull())
+		return false;
+
+	Handle(PrsDim_AngleDimension) aDim = new PrsDim_AngleDimension(aE1, aE2);
+	if (!aDim->IsValid())
+		return false;
+
+	aFirstPnt_ = aDim->FirstPoint();
+	aSecondPnt_ = aDim->SecondPoint();
+	aCenterPnt_ = aDim->CenterPoint();
+
+	SetModified(TRUE);
+	SetValid(TRUE);
+
+	return true;
+}
+
+bool kcAngleDimEntity::Initialize(const gp_Pnt &p1, const gp_Pnt &p2, const gp_Pnt &cp)
+{
+	aFirstPnt_ = p1;
+	aSecondPnt_ = p2;
+	aCenterPnt_ = cp;
+
+	SetModified(TRUE);
+	SetValid(TRUE);
+
+	return true;
+}
+
+// 根据记录的数据和属性，生成一个ais显示对象
+// 显示对象记录在m_aisObj中
+BOOL kcAngleDimEntity::DoBuildDisplayObj()
+{
+	Handle(PrsDim_AngleDimension) aDim;
+	aDim = new PrsDim_AngleDimension(aFirstPnt_, aCenterPnt_, aSecondPnt_);
+	if (!aDim.IsNull() && aDim->IsValid()) {
+		aDim->SetFlyout(dFlyout_);
+		//
+		hAISObject_ = aDim;
+		return TRUE;
+	}
+	return FALSE;
+}

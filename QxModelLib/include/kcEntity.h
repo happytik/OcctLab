@@ -11,6 +11,7 @@
 #include <map>
 #include <AIS_InteractiveObject.hxx>
 #include <Quantity_Color.hxx>
+#include <gp_Circ.hxx>
 #include "kBase.h"
 #include "kPoint.h"
 #include "kVector.h"
@@ -142,6 +143,9 @@ public:
 	virtual void				SetModified(BOOL bModified);
 	virtual BOOL				IsModified() const { return bModified_; }
 
+	//是否标注对象
+	virtual bool				IsDimension() const { return false; }
+
 	// 设置和获取图层。
 	virtual BOOL				SetLayer(kcLayer *pLayer);
 	virtual kcLayer*			GetLayer() const { return _pLayer; }
@@ -199,7 +203,7 @@ public:
 	virtual BOOL				Display(bool bShow,BOOL bUpdateView = TRUE);
 	virtual BOOL				IsDisplayed() const;
 	virtual BOOL				HasDispalyObj() const;
-	const Handle(AIS_EntityShape)&	DisplayObj() const { return _hAISObj; }
+	const Handle(AIS_InteractiveObject)&	DisplayObj() const { return hAISObject_; }
 
 protected:
 	// 生成显示对象
@@ -264,7 +268,8 @@ protected://属性
 
 protected:
 	Handle(AIS_InteractiveContext)		_hAISContext;
-	Handle(AIS_EntityShape)			_hAISObj;//显示对象,使用该特定的对象
+	Handle(AIS_InteractiveObject)		hAISObject_;//记录显示对象
+	Handle(AIS_EntityShape)				hAISEntObj_;//EntityShape显示对象
 
 	friend class kcLayer;
 
@@ -511,45 +516,135 @@ protected:
 	int						nReadEntNum_;//读取的ent个数
 }; 
 
-class kcDimEntity : public kcEntity{
+class QXLIB_API kcDimEntity : public kcEntity{
 public:
 	kcDimEntity();
 	virtual ~kcDimEntity();
 
-	void					SetFlyout(double dValue);
+	//是否标注对象
+	virtual bool		IsDimension() const { return true; }
+
+	void				SetFlyout(double dValue);
+	double				GetFlyout() const { return dFlyout_; }
+
+	void				SetArrowLength(double len);
+	double				GetArrowLength() const { return dArrowLen_; }
+
+	void				SetFontHeight(double h);
+	double				GetFontHeight() const { return dFontHeight_; }
+
+protected:
+	// 用于派生类向主块中记录其他的值
+	virtual bool		DoAddOtherCodeValue(QxStgBlock& blk);
+	virtual bool		DoGetOtherCodeValue(QxStgBlock& blk);
+	//
+	bool				DoAddCirc(const gp_Circ &aCirc, QxStgBlock& blk);
+	bool				DoGetCirc(QxStgBlock& blk, gp_Circ &aCirc);
+	//
+	bool				DoAddPlane(const gp_Pln &aPln, QxStgBlock& blk);
+	bool				DoGetPlane(QxStgBlock& blk, gp_Pln &aPln);
+	// 设置显示对象属性
+	virtual void		DoSetDisplayAttribs();
 
 protected:
 	double				dFlyout_;
-
+	double				dArrowLen_;//箭头的长度
+	double				dFontHeight_; //字体高度
 };
 
 
-class kcLengthDimEntity : public kcDimEntity{
+// 长度标注
+class QXLIB_API kcLengthDimEntity : public kcDimEntity{
 public:
 	kcLengthDimEntity();
 	~kcLengthDimEntity();
 
-	
+	bool			Initialize(const gp_Pnt &p1, const gp_Pnt &p2, const gp_Pln &pln);
+
+protected:
+	// 根据记录的数据和属性，生成一个ais显示对象
+	// 显示对象记录在m_aisObj中
+	virtual BOOL	DoBuildDisplayObj();
+
+protected:
+	// 用于派生类向主块中记录其他的值
+	virtual bool	DoAddOtherCodeValue(QxStgBlock& blk);
+	virtual bool	DoGetOtherCodeValue(QxStgBlock& blk);
+
+protected:
+	gp_Pnt			aFirstPnt_;
+	gp_Pnt			aSecondPnt_;
+	gp_Pln			aPlane_;
 };
 
-class kcDiameterDimEntity : public kcDimEntity{
+class QXLIB_API kcDiameterDimEntity : public kcDimEntity{
 public:
 	kcDiameterDimEntity();
 	~kcDiameterDimEntity();
+
+	bool			Initialize(const gp_Circ &aCirc);
+
+protected:
+	// 根据记录的数据和属性，生成一个ais显示对象
+	// 显示对象记录在m_aisObj中
+	virtual BOOL	DoBuildDisplayObj();
+
+protected:
+	// 用于派生类向主块中记录其他的值
+	virtual bool	DoAddOtherCodeValue(QxStgBlock& blk);
+	virtual bool	DoGetOtherCodeValue(QxStgBlock& blk);
+
+protected:
+	gp_Circ			aCirc_;
 };
 
-class kcRadiusDimEntity : public kcDimEntity{
+class QXLIB_API kcRadiusDimEntity : public kcDimEntity{
 public:
 	kcRadiusDimEntity();
 	~kcRadiusDimEntity();
+
+	bool			Initialize(const gp_Circ &aCirc,const gp_Pnt& pnt);
+
+protected:
+	// 根据记录的数据和属性，生成一个ais显示对象
+	// 显示对象记录在m_aisObj中
+	virtual BOOL	DoBuildDisplayObj();
+
+protected:
+	// 用于派生类向主块中记录其他的值
+	virtual bool	DoAddOtherCodeValue(QxStgBlock& blk);
+	virtual bool	DoGetOtherCodeValue(QxStgBlock& blk);
+
+protected:
+	gp_Circ			aCirc_;
+	gp_Pnt			aAnchorPnt_;
 };
 
-//class kcAngleDimEntity : public kcDimEntity{
-//public:
-//	kcAngleDimEntity();
-//	~kcAngleDimEntity();
-//
-//
-//};
+
+class QXLIB_API kcAngleDimEntity : public kcDimEntity{
+public:
+	kcAngleDimEntity();
+	~kcAngleDimEntity();
+
+	//
+	bool			Initialize(const TopoDS_Edge &aE1, const TopoDS_Edge &aE2);
+	bool			Initialize(const gp_Pnt &p1, const gp_Pnt &p2, const gp_Pnt &cp);
+
+protected:
+	// 根据记录的数据和属性，生成一个ais显示对象
+	// 显示对象记录在m_aisObj中
+	virtual BOOL	DoBuildDisplayObj();
+
+protected:
+	// 用于派生类向主块中记录其他的值
+	virtual bool	DoAddOtherCodeValue(QxStgBlock& blk);
+	virtual bool	DoGetOtherCodeValue(QxStgBlock& blk);
+
+
+protected:
+	gp_Pnt			aFirstPnt_;
+	gp_Pnt			aSecondPnt_;
+	gp_Pnt			aCenterPnt_;
+};
 
 #endif

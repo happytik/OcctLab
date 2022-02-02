@@ -243,6 +243,10 @@ public://写入部分接口函数
 	bool							AddCodeValue(vcode_t code,const char *pszBuf);
 	// 加入一个子块，子块指针会记录到内部，bFreeBlk:true,则由内部负责释放该对象
 	bool							AddCodeValue(vcode_t code,QxStgBlock *pBlk,bool bFreeBlk=true);
+	// 辅助函数
+	bool							AddCodeValue(vcode_t code, const gp_Pnt &p);
+	bool							AddCodeValue(vcode_t code, const gp_Vec &vec);
+	bool							AddCodeValue(vcode_t code, const gp_Dir &dir);
 
 	bool							Write(CArchive &ar);
 	//写入到内存中，返回写入byte数目
@@ -264,14 +268,18 @@ public: //读取部分函数
 
 	//根据code获取值对
 	QxStgCodeValue*				GetCodeValueByCode(vcode_t code);
-	bool							GetValueByCode(vcode_t code,int &ival);
-	bool							GetValueByCode(vcode_t code,unsigned int &ival);
-	bool							GetValueByCode(vcode_t code,double &dval);
-	bool							GetValueByCode(vcode_t code,double da[3]);
-	bool							GetValueByCode(vcode_t code,bool &bval);
-	bool							GetValueByCode(vcode_t code,BYTE *&pb,int &size);
-	bool							GetValueByCode(vcode_t code,std::string& str);
+	bool						GetValueByCode(vcode_t code,int &ival);
+	bool						GetValueByCode(vcode_t code,unsigned int &ival);
+	bool						GetValueByCode(vcode_t code,double &dval);
+	bool						GetValueByCode(vcode_t code,double da[3]);
+	bool						GetValueByCode(vcode_t code,bool &bval);
+	bool						GetValueByCode(vcode_t code,BYTE *&pb,int &size);
+	bool						GetValueByCode(vcode_t code,std::string& str);
 	QxStgBlock*					GetSubBlock(vcode_t code); //获取内嵌的子块
+	//辅助函数
+	bool						GetValueByCode(vcode_t code, gp_Pnt &pnt);
+	bool						GetValueByCode(vcode_t code, gp_Vec &vec);
+	bool						GetValueByCode(vcode_t code, gp_Dir &dir);
 	
 protected://读取辅助函数
 	bool							ReadHeaderData(CArchive &ar);

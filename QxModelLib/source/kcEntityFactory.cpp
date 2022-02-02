@@ -39,7 +39,20 @@ kcEntity* kcEntityFactory::CreateByType(int type)
 	case KCT_ENT_BLOCK:
 		pEntity = new kcBlockEntity;
 		break;
+	case KCT_ENT_DIM_LENGTH:
+		pEntity = new kcLengthDimEntity;
+		break;
+	case KCT_ENT_DIM_DIAMETER:
+		pEntity = new kcDiameterDimEntity;
+		break;
+	case KCT_ENT_DIM_RADIUS:
+		pEntity = new kcRadiusDimEntity;
+		break;
+	case KCT_ENT_DIM_ANGLE:
+		pEntity = new kcAngleDimEntity;
+		break;
 	default:
+		ASSERT(FALSE);
 		break;
 	}
 	return pEntity;

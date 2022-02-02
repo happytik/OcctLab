@@ -1150,6 +1150,36 @@ QxStgBlock* QxStgBlock::GetSubBlock(vcode_t code) //获取内嵌的子块
 	return pCV->GetBlock();
 }
 
+bool QxStgBlock::GetValueByCode(vcode_t code, gp_Pnt &pnt)
+{
+	double v[3];
+	if (GetValueByCode(code, v)) {
+		pnt.SetCoord(v[0], v[1], v[2]);
+		return true;
+	}
+	return false;
+}
+
+bool QxStgBlock::GetValueByCode(vcode_t code, gp_Vec &vec)
+{
+	double v[3];
+	if (GetValueByCode(code, v)) {
+		vec.SetCoord(v[0], v[1], v[2]);
+		return true;
+	}
+	return false;
+}
+
+bool QxStgBlock::GetValueByCode(vcode_t code, gp_Dir &dir)
+{
+	double v[3];
+	if (GetValueByCode(code, v)) {
+		dir.SetCoord(v[0], v[1], v[2]);
+		return true;
+	}
+	return false;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // 写入部分的实现
 
@@ -1237,6 +1267,27 @@ bool QxStgBlock::AddCodeValue(vcode_t code,QxStgBlock *pBlk,bool bFreeBlk)
 	ASSERT(pBlk && pBlk->IsValid());
 	QxStgCodeValue *pCV = new QxStgCodeValue(code,pBlk,bFreeBlk);
 	return DoAddCodeValue(pCV);
+}
+
+bool QxStgBlock::AddCodeValue(vcode_t code, const gp_Pnt &p)
+{
+	double v[3];
+	v[0] = p.X(); v[1] = p.Y(); v[2] = p.Z();
+	return AddCodeValue(code, v);
+}
+
+bool QxStgBlock::AddCodeValue(vcode_t code, const gp_Vec &vec)
+{
+	double v[3];
+	v[0] = vec.X(); v[1] = vec.Y(); v[2] = vec.Z();
+	return AddCodeValue(code, v);
+}
+
+bool QxStgBlock::AddCodeValue(vcode_t code, const gp_Dir &dir)
+{
+	double v[3];
+	v[0] = dir.X(); v[1] = dir.Y(); v[2] = dir.Z();
+	return AddCodeValue(code, v);
 }
 
 // 写入数据

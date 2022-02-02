@@ -42,6 +42,16 @@ inline void KxFromOccVec(const gp_Vec &aVec,double v[3])
 	v[0] = aVec.X();v[1] = aVec.Y();v[2] = aVec.Z();
 }
 
+inline void KxToOccDir(double v[3], gp_Dir &aDir)
+{
+	aDir.SetCoord(v[0], v[1], v[2]);
+}
+
+inline void KxFromOccDir(const gp_Dir &aDir, double v[3])
+{
+	v[0] = aDir.X(); v[1] = aDir.Y(); v[2] = aDir.Z();
+}
+
 //记录中点距离两点的弦高误差
 QXLIB_API double kxCalcMidPointDeviation(double p1[3],double p2[3],double mp[3]);
 

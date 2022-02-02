@@ -34,8 +34,8 @@ public:
 	void						ReverseBaseDir();
 
 	// 返回长度值，可能是负值.
-	double					GetLength() const { return _dLength; };
-	void						SetDefault(double dLen) { _dDefaultLength = _dLength = dLen; }
+	double					GetLength() const { return dLength_; };
+	void						SetDefault(double dLen) { dDefaultLength_ = dLength_ = dLen; }
 	kPoint3					GetEndPoint() const { return _endPoint; }
 
 protected:
@@ -57,20 +57,20 @@ public:
 
 protected:
 	//
-	void						CalcCurrPoint(kuiMouseInput& mouseInput,kPoint3& kpnt);
+	void					CalcCurrPoint(kuiMouseInput& mouseInput,kPoint3& kpnt);
 
 protected:
-	double					_dLength;//长度
-	double					_dDefaultLength;//
+	double					dLength_;//长度
+	double					dDefaultLength_;//
 	kPoint3					_endPoint;
-	double					_aBasePoint[3];//基准点
-	double					_aBaseDir[3];//基准方向，沿此方向的距离
-	bool						_bBaseDir;//是否沿基准方向
-	bool						_bRealtimeUpdate;//是否实时更新关联变量的值。
+	double					aBasePoint_[3];//基准点
+	double					aBaseDir_[3];//基准方向，沿此方向的距离
+	bool					bHasBaseDir_;//是否沿基准方向
+	bool					bRealtimeUpdate_;//是否实时更新关联变量的值。
 
 protected:
-	kcPreviewLine				*_pPreviewLine;
-	kcPreviewText				*_pPreviewText;
+	kcPreviewLine			*pPreviewLine_;
+	kcPreviewText			*pPreviewText_;
 };
 
 #endif
