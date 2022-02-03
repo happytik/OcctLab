@@ -37,22 +37,16 @@ BOOL	kcmSolidRevol::CanFinish()//命令是否可以完成
 //
 int	kcmSolidRevol::OnInputFinished(kiInputTool *pTool)
 {
-	if(pTool == m_pInputEntity)
-	{
-		if(m_pInputEntity->IsInputDone())
-		{
+	if(pTool == m_pInputEntity){
+		if(m_pInputEntity->IsInputDone()){
 			m_nState = KC_STA_INPUT_VEC;
 
 			NavToNextTool();
 		}
-	}
-	else if(pTool == m_pInputVec)
-	{
-		if(m_pInputVec->IsInputDone())
-		{
+	}else if(pTool == m_pInputVec){
+		if(m_pInputVec->IsInputDone()){
 			//生成旋转面
-			if(MakeRevolShape())
-			{
+			if(MakeRevolShape()){
 				m_pInputEntity->ClearSel();
 
 				Done();
@@ -83,37 +77,26 @@ BOOL	kcmSolidRevol::MakeRevolShape()
 	if(pSelSet->GetSelCount() != 1)
 		return FALSE;
 
-	pSelSet->InitSelected();
-	kiSelEntity se = pSelSet->CurSelected();
-	if(!IS_FACE_ENTITY(se._pEntity))
+	kiSelEntity se = pSelSet->GetFirstSelected();
+	TopoDS_Shape aS = se.SelectShape();//支持内部面的选取
+	if (aS.IsNull() || aS.ShapeType() != TopAbs_FACE)
 		return FALSE;
+	TopoDS_Face aFace = TopoDS::Face(se.SelectShape());
 
-	kvCoordSystem cs;
-	kcBasePlane *pWorkPlane = GetCurrentBasePlane();
-	pWorkPlane->GetCoordSystem(cs);
 	kPoint3 org; 
 	kVector3 vec;
 	m_pInputVec->GetPoint(org);
 	m_pInputVec->GetVector(vec);
 	vec.normalize();
-	kVector3 z = cs.Z();
-	kVector3 x = z ^ vec;
-	x.normalize();
 
 	gp_Ax1 ax1(gp_Pnt(org[0],org[1],org[2]),gp_Dir(vec[0],vec[1],vec[2]));
 	double rad = m_dAngle * K_PI / 180.0;
 
 	kcEntity *pNewEntity = NULL;
-	kcFaceEntity *pSurEnt = (kcFaceEntity *)se._pEntity;
-	TopoDS_Face aFace = pSurEnt->GetFace();
-
-
-
 	TopoDS_Shape aShape;
 	try{
 		BRepPrimAPI_MakeRevol mr(aFace,ax1,rad,Standard_True);
-		if(mr.IsDone())
-		{
+		if(mr.IsDone()){
 			aShape = mr.Shape();
 			if(aShape.IsNull())
 				return FALSE;
@@ -122,20 +105,20 @@ BOOL	kcmSolidRevol::MakeRevolShape()
 		return FALSE;
 	}
 
-	if(aShape.ShapeType() == TopAbs_SOLID)
-	{
+	if(aShape.ShapeType() == TopAbs_SOLID){
 		TopoDS_Solid aSolid = TopoDS::Solid(aShape);
 		kcSolidEntity *pSolidEnt = new kcSolidEntity;
 		pSolidEnt->SetSolid(aSolid);
 		pNewEntity = pSolidEnt;
 	}
 
-	if(pNewEntity)
-	{
+	if(pNewEntity){
 		kcModel *pModel = GetModel();
 		pModel->BeginUndo(GetName());
 		pModel->AddEntity(pNewEntity);
 		pModel->EndUndo();
+
+		Redraw();
 	}
 
 	return TRUE;
@@ -147,10 +130,13 @@ BOOL	kcmSolidRevol::CreateInputTools()
 	kiOptionItem *pItem = new kiOptionDouble("旋转角度",'A',m_dAngle);
 	m_optionSet.AddOption(pItem);
 
-	m_pInputEntity = new kiInputEntityTool(this,"选择一个曲面");
-	m_pInputEntity->SetOption(KCT_ENT_FACE,1);
+	m_optionSet.AddQuitButtonOption();
 
-	m_pInputVec = new kiInputVector(this,"选择旋转轴",&m_optionSet);
+	m_pInputEntity = new kiInputEntityTool(this,"select a FACE",&m_optionSet);
+	m_pInputEntity->SetOption(KCT_ENT_FACE,1);
+	m_pInputEntity->SetNaturalMode(false);
+
+	m_pInputVec = new kiInputVector(this,"选择旋转轴");
 	m_pInputVec->SetType(eInputWorkPlaneVector);
 
 	return TRUE;

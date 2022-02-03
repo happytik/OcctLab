@@ -16,6 +16,7 @@
 
 kcmSolidBoolean::kcmSolidBoolean(void)
 {
+	pOptionSet_ = NULL;
 	_pInputEntity1 = NULL;
 	_pInputEntity2 = NULL;
 	_bParallel = false;
@@ -61,6 +62,8 @@ int	kcmSolidBoolean::OnInputFinished(kiInputTool *pTool)
 // 创建必要的输入工具
 BOOL	kcmSolidBoolean::CreateInputTools()
 {
+	pOptionSet_ = new kiOptionSet(this);
+
 	//目标对象，目前只支持一个
 	_pInputEntity1 = new kiInputEntityTool(this,"拾取实体对象");
 	_pInputEntity1->SetOption(KCT_ENT_SOLID | KCT_ENT_SHELL | KCT_ENT_FACE,1);
@@ -68,15 +71,15 @@ BOOL	kcmSolidBoolean::CreateInputTools()
 	_pInputEntity1->AddInitSelected(true);
 
 	kiOptionBool *pOptItem = new kiOptionBool("并行",'P',2,_bParallel);
-	pOptItem->SetOptionCallBack(this);
-	_optionSet.AddOption(pOptItem);
+	pOptionSet_->AddOption(pOptItem);
 
 	pOptItem = new kiOptionBool("作为半空间",'H',3,_bAsHalfSpace);
-	pOptItem->SetOptionCallBack(this);
-	_optionSet.AddOption(pOptItem);
+	pOptionSet_->AddOption(pOptItem);
+
+	pOptionSet_->AddQuitButtonOption();
 
 	//工具对象，目前支持多个
-	_pInputEntity2 = new kiInputEntityTool(this,"拾取工具实体",&_optionSet);
+	_pInputEntity2 = new kiInputEntityTool(this,"拾取工具实体", pOptionSet_);
 	_pInputEntity2->SetOption(KCT_ENT_SOLID | KCT_ENT_SHELL | KCT_ENT_FACE,false);
 	_pInputEntity2->SetNaturalMode(true);
 
@@ -85,8 +88,7 @@ BOOL	kcmSolidBoolean::CreateInputTools()
 
 BOOL	kcmSolidBoolean::DestroyInputTools()
 {
-	_optionSet.Clear();
-
+	KC_SAFE_DELETE(pOptionSet_);
 	KC_SAFE_DELETE(_pInputEntity1);
 	KC_SAFE_DELETE(_pInputEntity2);
 

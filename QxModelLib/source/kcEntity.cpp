@@ -114,11 +114,12 @@ void kcEntity::Reset()
 {
 	_entType = 0;
 	_sTypeName = "";
-	_nHandle = 0;
+	nId_ = 0;
 	_szName[0] = '\0';
 	sNameDesc_ = "";
 	_pModel = NULL;
 	_pLayer = NULL;
+	nLayerId_ = 0;
 	pOwner_ = NULL;
 	bValid_ = false;
 
@@ -129,29 +130,31 @@ void kcEntity::Reset()
 }
 
 // 设定所在图层，并于此时生成Handle和名称
+// 对于undo添加回删除的对象，仅需要设置layer对象
 // 
 BOOL kcEntity::SetLayer(kcLayer *pLayer)
 {
 	_pLayer = pLayer;
 	if(pLayer){
+		nLayerId_ = _pLayer->GetID(); //used by undo
 		_pModel = pLayer->GetModel();
 		if(_pModel){
 			_hAISContext = _pModel->GetAISContext();
 			
 			//分配Handle和生成名称
 			//对已经有的不分配了，例如：读取的ent，或者再次加入的ent
-			if(!KC_IS_VALID_HANDLE(_nHandle)){
+			if(!KC_IS_VALID_HANDLE(nId_)){
 				kcHandleMgr *pHandleMgr = _pModel->GetHandleMgr();
 				ASSERT(pHandleMgr);
-				_nHandle = pHandleMgr->AllocHandle(GetType());
-				ASSERT(KC_IS_VALID_HANDLE(_nHandle));
+				nId_ = pHandleMgr->AllocHandle(GetType());
+				ASSERT(KC_IS_VALID_HANDLE(nId_));
 
 				//生成名称
 				if(_szName[0] == '\0'){
 					if(!sNameDesc_.empty()){
-						sprintf_s(_szName,KC_ENT_NAME_MAX,"%s %d",sNameDesc_.c_str(),_nHandle);
+						sprintf_s(_szName,KC_ENT_NAME_MAX,"%s %d",sNameDesc_.c_str(),nId_);
 					}else{
-						sprintf_s(_szName,KC_ENT_NAME_MAX,"%s %d",_sTypeName.c_str(),_nHandle);
+						sprintf_s(_szName,KC_ENT_NAME_MAX,"%s %d",_sTypeName.c_str(),nId_);
 					}
 				}
 			}
@@ -227,7 +230,9 @@ BOOL  kcEntity::Display(bool bShow,BOOL bUpdateView)
 		if(!hAISObject_.IsNull() && IsDisplayed()){
 			_hAISContext->Erase(hAISObject_,bUpdateView ? true : false);
 		}
-		bValid_ = false;
+
+		bVisible_ = IsDisplayed() ? true : false;
+
 		return TRUE;
 	}
 

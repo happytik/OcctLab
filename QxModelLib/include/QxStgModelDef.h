@@ -22,6 +22,9 @@
 #define KSTG_BLOCK_BASEPLANES_END		0x0111  //基准面数据
 #define KSTG_BLOCK_BASEPLANE			0x0112  //基准面数据
 
+#define KSTG_BLOCK_HANDLE_MGR			0x0120  //句柄管理数据
+#define KSTG_BLOCK_HANDLE_MAP			0x0121  
+
 //值对的code的固定值,如果是该类型，尽量使用该值
 //尽量大一些，留下小值方便内部使用
 #define KSTG_CV_COMMON_CODE_BASE  200

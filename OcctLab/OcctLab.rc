@@ -64,7 +64,9 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\OcctLab.ico"
+
 IDR_OCCTLABTYPE         ICON                    "res\\OcctLabDoc.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -72,9 +74,13 @@ IDR_OCCTLABTYPE         ICON                    "res\\OcctLabDoc.ico"
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 IDB_BITMAP_IMGLIST      BITMAP                  "res\\bitmap2.bmp"
+
 IDB_BITMAP_MODELTREE    BITMAP                  "res\\ModelTreeIcons16.bmp"
+
 IDB_BITMAP_MODELTREE24  BITMAP                  "res\\ModelTreeIcons24.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -185,10 +191,6 @@ BEGIN
         MENUITEM "dump view",                   ID_MENU_DUMP_VIEW
         MENUITEM "shape struct",                32792
         MENUITEM "lua script",                  ID_MENU_LUA_SCRIPT
-        POPUP "COM test"
-        BEGIN
-            MENUITEM "Add",                         ID_COM_TEST_ADD
-        END
         MENUITEM "show Sensitive",              32845
     END
     POPUP "°ïÖú(&H)"

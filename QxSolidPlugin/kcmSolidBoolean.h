@@ -45,7 +45,7 @@ protected:
 	kiInputEntityTool			*_pInputEntity1;
 	kiInputEntityTool			*_pInputEntity2;
 
-	kiOptionSet				_optionSet;
+	kiOptionSet					*pOptionSet_;
 	bool						_bParallel;//是否使用并发执行
 	bool						_bAsHalfSpace;//face和shell是否作为半空间
 

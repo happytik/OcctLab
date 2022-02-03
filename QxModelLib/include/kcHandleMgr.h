@@ -56,7 +56,7 @@ public:
 	void					Clear();
 
 	//根据类型，分配和释放Handle
-	int					AllocHandle(int entType);
+	int						AllocHandle(int entType);
 	void					FreeHandle(int entType,int handle);
 	// 标记一个handle已经使用了
 	bool					MaskHandle(int entType,int handle);
@@ -69,23 +69,11 @@ protected:
 	kcHandleMap*			FindHandleMap(int entType);
 
 protected:
-	kcHandleMap			_layerHandleMap;//图层
-	kcHandleMap			_pointHandleMap;
-	kcHandleMap			_curveHandleMap;
-	kcHandleMap			_wireHandleMap;
-	kcHandleMap			_faceHandleMap;
-	kcHandleMap			_shellHandleMap;
-	kcHandleMap			_solidHandleMap;
-	kcHandleMap			_compHandleMap;
-	kcHandleMap			_blockHandleMap;
-	kcHandleMap			aDiamDimHandleMap_;
-	kcHandleMap			aRadDimHandleMap_;
-	kcHandleMap			aLenDimHandleMap_;
-	kcHandleMap			aAngDimHandleMap_;
-	kcHandleMap			_basePlaneHandleMap;
+	kcHandleMap				aLayerHandleMap_;//图层
+	kcHandleMap				aEntityHandleMap_;//kcEntity的handle统一分配，保证唯一性
+	kcHandleMap				aBasePlaneHandleMap_;//基准面的handle
 
-	stdHandleMapMap		_handleMapMap;
-	std::vector<int>		_handleMapArray;
+	stdHandleMapMap			aHandleMapMap_;
 };
 
 #endif

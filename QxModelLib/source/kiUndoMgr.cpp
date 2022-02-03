@@ -27,13 +27,13 @@ bool	kiNewDelUndoItem::Undo()
 		_pModel->DelEntity(_aNewEntity[ix]);
 
 	// 添加删除的对象
-	kcLayer *pLayer = NULL;
+	int nLayerId = 0;
 	isize = (int)_aDelEntity.size();
-	for(ix = 0;ix < isize;ix ++)
-	{
-		pLayer = _aDelEntity[ix]->GetLayer();
-		ASSERT(pLayer);
-		_pModel->AddEntity(_aDelEntity[ix],pLayer);
+	for(ix = 0;ix < isize;ix ++){
+		//根据id添加到原来的图层中
+		nLayerId = _aDelEntity[ix]->GetLayerId();
+		ASSERT(nLayerId > 0);
+		_pModel->AddEntity(_aDelEntity[ix],nLayerId);
 	}
 		
 	return true;

@@ -130,9 +130,9 @@ BOOL  kcModel::ReadLayerData(CArchive& ar)
 		return FALSE;
 	}
 
-	int nHandle = 0,nbLayer = 0;
+	int nCurLayerId = 0,nbLayer = 0;
 	if(!blk.GetValueByCode(1,nbLayer) ||
-		!blk.GetValueByCode(2,nHandle))//获取当前图层的handle
+		!blk.GetValueByCode(2, nCurLayerId))//获取当前图层的handle
 	{
 		ASSERT(FALSE);
 		return FALSE;
@@ -153,7 +153,7 @@ BOOL  kcModel::ReadLayerData(CArchive& ar)
 		}
 		_layerList.push_back(pLayer);
 
-		if(pLayer->GetHandle() == nHandle){
+		if(pLayer->GetID() == nCurLayerId){
 			SetCurrLayer(pLayer);
 		}
 	}
@@ -179,8 +179,8 @@ BOOL  kcModel::WriteLayerData(CArchive& ar)
 	int nbLayer = (int)_layerList.size();
 	blk.AddCodeValue(1,nbLayer);
 	//当前图层
-	int nHandle = _pCurLayer->GetHandle();
-	blk.AddCodeValue(2,nHandle);
+	int nId = _pCurLayer->GetID();
+	blk.AddCodeValue(2,nId);
 	
 	blk.Write(ar);
 

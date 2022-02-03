@@ -164,7 +164,7 @@ void	kcModel::SetModelTreeInterface(kuiModelTreeInterface *pModelTreeInterface)
 		kcLayerList::iterator it = _layerList.begin();
 		for(;it != _layerList.end();it ++){
 			kcLayer *pLayer = *it;
-			_pModelTreeInterface->AddLayer(pLayer->_strName.c_str(),pLayer);
+			_pModelTreeInterface->AddLayer(pLayer->GetLayerName().c_str(),pLayer);
 		}
 	}
 }
@@ -245,7 +245,20 @@ kcLayer*	kcModel::FindLayer(const char* szLayerName)
 	return pLayer;
 }
 
-BOOL	kcModel::SetCurrLayer(const char* szLayerName)
+kcLayer* kcModel::GetLayer(int nLayerId) const
+{
+	kcLayer *pLayer = NULL;
+	kcLayerList::const_iterator ite = _layerList.begin();
+	for (; ite != _layerList.end(); ++ite) {
+		if ((*ite)->GetID() == nLayerId) {
+			pLayer = *ite;
+			break;
+		}
+	}
+	return pLayer;
+}
+
+BOOL kcModel::SetCurrLayer(const char* szLayerName)
 {
 	kcLayer *pLayer = FindLayer(szLayerName);
 	if(pLayer == NULL)
@@ -287,7 +300,7 @@ int kcModel::GetLayerCount() const
 }
 
 // 添加对象到当前图层
-BOOL kcModel::AddEntity(kcEntity *pEntity,BOOL bUpdateView)
+BOOL kcModel::AddEntity(kcEntity *pEntity,bool bUpdateView)
 {
 	if(!_pCurLayer)
 		return FALSE;
@@ -295,7 +308,7 @@ BOOL kcModel::AddEntity(kcEntity *pEntity,BOOL bUpdateView)
 	return AddEntity(pEntity,_pCurLayer,bUpdateView);
 }
 
-BOOL kcModel::AddEntity(const std::vector<kcEntity *>& aEnt,BOOL bUpdateView)
+BOOL kcModel::AddEntity(const std::vector<kcEntity *>& aEnt,bool bUpdateView)
 {
 	if(!_pCurLayer)
 		return FALSE;
@@ -307,8 +320,19 @@ BOOL kcModel::AddEntity(const std::vector<kcEntity *>& aEnt,BOOL bUpdateView)
 	return TRUE;
 }
 
+BOOL kcModel::AddEntity(kcEntity *pEntity, int nLayerId, bool bUpdateView)
+{
+	kcLayer *pLayer = GetLayer(nLayerId);
+	if (!pLayer) {
+		ASSERT(FALSE);
+		return FALSE;
+	}
+		
+	return AddEntity(pEntity,pLayer,bUpdateView);
+}
+
 // 实际的添加和显示实现
-BOOL kcModel::AddEntity(kcEntity *pEntity,kcLayer *pLayer,BOOL bUpdateView)
+BOOL kcModel::AddEntity(kcEntity *pEntity,kcLayer *pLayer,bool bUpdateView)
 {
 	if(!pEntity || !pLayer || !pEntity->IsValid())
 		return FALSE;

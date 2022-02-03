@@ -23,9 +23,7 @@
 typedef std::vector<TopoDS_Shape>  QxTopShapeArray;
 typedef std::list<TopoDS_Shape> QxTopShapeList;
 
-// 类型使用高word作为主类型掩码,低word作为子类型定义.
-// 如果还要再定义子子类型,可以类似分配掩码.
-// 例如:0x201 是curve类型下的直线.
+
 #define KCT_ENT_POINT			0x01
 #define KCT_ENT_EDGE			0x02
 #define KCT_ENT_WIRE			0x04 //普通wire
@@ -34,7 +32,7 @@ typedef std::list<TopoDS_Shape> QxTopShapeList;
 #define KCT_ENT_SOLID			0x20
 #define KCT_ENT_COMPOUND		0x40
 #define KCT_ENT_BLOCK			0x80
-#define KCT_ENT_DIM			0x100 //dim的
+#define KCT_ENT_DIM				0x100 //dim的
 #define KCT_ENT_DIM_LENGTH		(KCT_ENT_DIM + 1)
 #define KCT_ENT_DIM_DIAMETER	(KCT_ENT_DIM + 2)
 #define KCT_ENT_DIM_RADIUS		(KCT_ENT_DIM + 3)
@@ -130,9 +128,9 @@ public:
 	virtual ~kcEntity(void);
 
 	//返回类型
-	virtual int				GetType() const { return _entType; }
-	DWORD					GetHandle() const { return _nHandle; }
-	const char*				GetName() const { return _szName;}
+	virtual int					GetType() const { return _entType; }
+	int							GetID() const { return nId_; }
+	const char*					GetName() const { return _szName;}
 	bool						HasName() const;
 	bool						SetNameDesc(const char *pszDesc); //设定名称中描述部分，用于组成名称
 
@@ -149,6 +147,7 @@ public:
 	// 设置和获取图层。
 	virtual BOOL				SetLayer(kcLayer *pLayer);
 	virtual kcLayer*			GetLayer() const { return _pLayer; }
+	virtual int					GetLayerId() const { return nLayerId_; }
 
 	virtual bool				SetOwner(kcEntity *pOwner);
 	virtual kcEntity*			GetOwner() const;
@@ -229,14 +228,15 @@ protected:
 	void						SetFaceColorAttribs();
 
 protected:
-	int						_entType;//类型
-	std::string				_sTypeName;//例如："Point或者点"
-	int						_nHandle;//句柄,整个模型唯一,有效值从1开始.
+	int							_entType;//类型
+	std::string					_sTypeName;//例如："Point或者点"
+	int							nId_;//句柄,整个模型唯一,有效值从1开始.
 	char						_szName[KC_ENT_NAME_MAX];//名称
-	std::string				sNameDesc_; //名称中的描述部分，用于组成最终名称
+	std::string					sNameDesc_; //名称中的描述部分，用于组成最终名称
 	TopoDS_Shape				aShape_;//OCCT shape的信息
-	kcModel					*_pModel;//所在model。
-	kcLayer					*_pLayer;//所在图层
+	kcModel						*_pModel;//所在model。
+	kcLayer						*_pLayer;//所在图层
+	int							nLayerId_;//所在图层的Id.
 	kcEntity					*pOwner_; //所属对象，目前主要用于block中对象
 	bool						bVisible_; //对象是否可见
 

@@ -72,7 +72,7 @@ BOOL kcEntity::Read(CArchive& ar)
 	std::string sName;
 	bool bVisible = false;
 	QxStgBlock *pAttrBlk = blk.GetSubBlock(KCVC_ENT_ATTR_BLOCK); //读取属性块
-	if(!blk.GetValueByCode(KSTG_CV_CODE_HANDLE,_nHandle) ||
+	if(!blk.GetValueByCode(KSTG_CV_CODE_HANDLE,nId_) ||
 		!blk.GetValueByCode(KSTG_CV_CODE_VISIBLE,bVisible) ||
 		!pAttrBlk)
 	{
@@ -123,7 +123,7 @@ BOOL	kcEntity::Write(CArchive& ar)
 	AddShapeData(blk,aShape_);
 	// 加入共同的值
 	//句柄
-	blk.AddCodeValue(KSTG_CV_CODE_HANDLE,_nHandle);
+	blk.AddCodeValue(KSTG_CV_CODE_HANDLE,nId_);
 	//名称
 	if(_szName[0] != '\0'){
 		blk.AddCodeValue(KSTG_CV_CODE_NAME,_szName);

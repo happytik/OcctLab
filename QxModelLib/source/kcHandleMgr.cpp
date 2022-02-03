@@ -3,6 +3,7 @@
 #include "kcLayer.h"
 #include "kcBasePlane.h"
 #include "QxStgBlock.h"
+#include "QxStgModelDef.h"
 #include "kcHandleMgr.h"
 
 ////////////////////////////////////////////////////////
@@ -166,7 +167,7 @@ bool  kcHandleMap::Read(CArchive& ar)
 {
 	QxStgBlock blk;
 
-	if(!blk.Read(ar) || blk.GetType() != 0x1123){
+	if(!blk.Read(ar,KSTG_BLOCK_HANDLE_MAP)){
 		ASSERT(FALSE);
 		return false;
 	}
@@ -182,11 +183,13 @@ bool  kcHandleMap::Read(CArchive& ar)
 	return false;
 }
 
+// 这里，仅仅写入了大小，数据需要读取对象时，再通过mask添加回来
+//
 bool  kcHandleMap::Write(CArchive& ar)
 {
 	QxStgBlock blk;
 
-	blk.Initialize(0x1123);//类型为了验证
+	blk.Initialize(KSTG_BLOCK_HANDLE_MAP);//类型为了验证
 	blk.AddCodeValue(0,_nMapSize);
 	
 	return (blk.Write(ar) ? true : false);
@@ -205,20 +208,9 @@ kcHandleMgr::~kcHandleMgr(void)
 
 bool  kcHandleMgr::Initialize()
 {
-	_layerHandleMap.Initialize();
-	_pointHandleMap.Initialize();
-	_curveHandleMap.Initialize();
-	_wireHandleMap.Initialize();
-	_faceHandleMap.Initialize();
-	_shellHandleMap.Initialize();
-	_solidHandleMap.Initialize();
-	_compHandleMap.Initialize();
-	_blockHandleMap.Initialize();
-	aDiamDimHandleMap_.Initialize();
-	aRadDimHandleMap_.Initialize();
-	aLenDimHandleMap_.Initialize();
-	aAngDimHandleMap_.Initialize();
-	_basePlaneHandleMap.Initialize();
+	aLayerHandleMap_.Initialize();
+	aEntityHandleMap_.Initialize();
+	aBasePlaneHandleMap_.Initialize();
 
 	InitHandleMapMap();
 	
@@ -228,50 +220,33 @@ bool  kcHandleMgr::Initialize()
 // 这里的顺序和保存和读取的应当一致
 void  kcHandleMgr::InitHandleMapMap()
 {
-	_handleMapMap.clear();
-	_handleMapArray.clear();
-
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_POINT,&_pointHandleMap));
-	_handleMapArray.push_back(KCT_ENT_POINT);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_EDGE,&_curveHandleMap));
-	_handleMapArray.push_back(KCT_ENT_EDGE);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_WIRE,&_wireHandleMap));
-	_handleMapArray.push_back(KCT_ENT_WIRE);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_FACE,&_faceHandleMap));
-	_handleMapArray.push_back(KCT_ENT_FACE);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_SHELL,&_shellHandleMap));
-	_handleMapArray.push_back(KCT_ENT_SHELL);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_SOLID,&_solidHandleMap));
-	_handleMapArray.push_back(KCT_ENT_SOLID);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_COMPOUND,&_compHandleMap));
-	_handleMapArray.push_back(KCT_ENT_COMPOUND);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_BLOCK,&_blockHandleMap));
-	_handleMapArray.push_back(KCT_ENT_BLOCK);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_DIAMETER, &aDiamDimHandleMap_));
-	_handleMapArray.push_back(KCT_ENT_DIM_DIAMETER);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_RADIUS, &aRadDimHandleMap_));
-	_handleMapArray.push_back(KCT_ENT_DIM_RADIUS);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_LENGTH, &aLenDimHandleMap_));
-	_handleMapArray.push_back(KCT_ENT_DIM_LENGTH);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_ANGLE, &aAngDimHandleMap_));
-	_handleMapArray.push_back(KCT_ENT_DIM_ANGLE);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_ENT_LAYER,&_layerHandleMap));
-	_handleMapArray.push_back(KCT_ENT_LAYER);
-	_handleMapMap.insert(stdHandleMapMap::value_type(KCT_BASE_PLANE,&_basePlaneHandleMap));
-	_handleMapArray.push_back(KCT_BASE_PLANE);
+	aHandleMapMap_.clear();
+	
+	//这里注册相同的map，以便给entity统一分配id
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_POINT,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_EDGE,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_WIRE,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_FACE,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_SHELL,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_SOLID,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_COMPOUND,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_BLOCK,&aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_DIAMETER, &aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_RADIUS, &aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_LENGTH, &aEntityHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_DIM_ANGLE, &aEntityHandleMap_));
+	//
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_ENT_LAYER,&aLayerHandleMap_));
+	aHandleMapMap_.insert(stdHandleMapMap::value_type(KCT_BASE_PLANE,&aBasePlaneHandleMap_));
 }
 
 void  kcHandleMgr::Clear()
 {
-	kcHandleMap *pHandleMap = NULL;
-	stdHandleMapMap::iterator ite;
-	for(ite = _handleMapMap.begin();ite != _handleMapMap.end();ite ++){
-		pHandleMap = (*ite).second;
-		pHandleMap->Clear();
-	}
-
-	_handleMapArray.clear();
-	_handleMapMap.clear();
+	aEntityHandleMap_.Clear();
+	aLayerHandleMap_.Clear();
+	aBasePlaneHandleMap_.Clear();
+		
+	aHandleMapMap_.clear();
 
 	//重新初始化
 	Initialize();
@@ -279,8 +254,8 @@ void  kcHandleMgr::Clear()
 
 kcHandleMap*  kcHandleMgr::FindHandleMap(int entType)
 {
-	stdHandleMapMap::iterator ite = _handleMapMap.find(entType);
-	if(ite != _handleMapMap.end())
+	stdHandleMapMap::iterator ite = aHandleMapMap_.find(entType);
+	if(ite != aHandleMapMap_.end())
 		return (*ite).second;
 	return NULL;
 }
@@ -323,28 +298,40 @@ bool  kcHandleMgr::MaskHandle(int entType,int handle)
 // 改变顺序，增删map，都会导致文件格式改变
 bool  kcHandleMgr::Read(CArchive& ar)
 {
-	std::vector<int>::size_type ix,isize = _handleMapArray.size();
-	kcHandleMap *pHandleMap = NULL;
-	
-	for(ix = 0;ix < isize;ix ++){
-		pHandleMap = FindHandleMap(_handleMapArray[ix]);
-		ASSERT(pHandleMap);
-		pHandleMap->Read(ar);
+	QxStgBlock blk;
+	int nbMap = 0;
+
+	if (!blk.Read(ar, KSTG_BLOCK_HANDLE_MGR)) {
+		return false;
 	}
+	if (!blk.GetValueByCode(0, nbMap) || nbMap != 3) {
+		ASSERT(FALSE);
+		return false;
+	}
+	//依次读取
+	aEntityHandleMap_.Read(ar);
+	aLayerHandleMap_.Read(ar);
+	aBasePlaneHandleMap_.Read(ar);
+	//必要的初始化
+	InitHandleMapMap();
 
 	return true;
 }
 
 bool  kcHandleMgr::Write(CArchive& ar)
 {
-	std::vector<int>::size_type ix,isize = _handleMapArray.size();
-	kcHandleMap *pHandleMap = NULL;
-	
-	for(ix = 0;ix < isize;ix ++){
-		pHandleMap = FindHandleMap(_handleMapArray[ix]);
-		ASSERT(pHandleMap);
-		pHandleMap->Write(ar);
-	}
+	//写入头
+	QxStgBlock blk;
+	int nbMap = 3;
 
+	blk.Initialize(KSTG_BLOCK_HANDLE_MGR);
+	blk.AddCodeValue(0, nbMap);
+	blk.Write(ar);
+
+	//依次写入每个map
+	aEntityHandleMap_.Write(ar);
+	aLayerHandleMap_.Write(ar);
+	aBasePlaneHandleMap_.Write(ar);
+	
 	return true;
 }

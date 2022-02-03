@@ -77,6 +77,7 @@ public://图层管理
 	BOOL					DeleteLayer(kcLayer *pLayer);
 	kcLayer*				DeleteLayer(const char* szLayerName);
 	kcLayer*				FindLayer(const char* szLayerName);
+	kcLayer*				GetLayer(int nLayerId) const;
 	BOOL					SetCurrLayer(const char* szLayerName);
 	BOOL					SetCurrLayer(kcLayer *pLayer);
 	kcLayer*				GetCurrLayer() const;
@@ -86,9 +87,11 @@ public://图层管理
 
 public:
 	//添加和删除图元
-	BOOL					AddEntity(kcEntity *pEntity,BOOL bUpdateView = FALSE);
-	BOOL					AddEntity(const std::vector<kcEntity *>& aEnt,BOOL bUpdateView = FALSE);
-	BOOL					AddEntity(kcEntity *pEntity,kcLayer *pLayer,BOOL bUpdateView = FALSE);
+	BOOL					AddEntity(kcEntity *pEntity,bool bUpdateView = false);
+	BOOL					AddEntity(const std::vector<kcEntity *>& aEnt, bool bUpdateView = false);
+	BOOL					AddEntity(kcEntity *pEntity, int nLayerId, bool bUpdateView = false);
+	BOOL					AddEntity(kcEntity *pEntity,kcLayer *pLayer,bool bUpdateView = false);
+	
 	BOOL					DelEntity(kcEntity *pEntity,BOOL bUpdateView = FALSE);
 	kcEntity*				DelEntity(const Handle(AIS_InteractiveObject)& aObj,BOOL bUpdateView = FALSE);
 	kcEntity*				GetEntity(const Handle(AIS_InteractiveObject)& aObj);
