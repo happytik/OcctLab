@@ -1,4 +1,5 @@
 # OcctLab
+
 ## 说明
 
 Demo some OpenCascade functions。
@@ -17,3 +18,6 @@ Demo some OpenCascade functions。
 
 需要定义一个环境变量：**OCCT_ROOT_760**指向OpenCascade的inc所在的路径。
 
+## Release程序
+
+在Bin/X64/Release目录下，编译了一个可执行程序，使用visual studio 2017编译，Occt版本为7.6.0.
