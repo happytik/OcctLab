@@ -7,12 +7,14 @@
 #include "kiOptionSet.h"
 
 class kiInputEntityTool;
-class kiInputDoubleTool;
+class kiInputOptionsTool;
+class kcDispSolidArrow;
+class kiOptionItem;
 
 class kcmSolidOffset : public kiCommand
 {
 public:
-	kcmSolidOffset(void);
+	kcmSolidOffset(int subCmd);
 	virtual ~kcmSolidOffset(void);
 
 	// 表明命令可以完成,主要和Apply函数结合使用.
@@ -23,9 +25,14 @@ public:
 	//
 	virtual  int			OnInputFinished(kiInputTool *pTool);
 
+	// 当选项改变后的调用函数
+	virtual void			OnOptionChanged(kiOptionItem *pOptionItem);
 protected:
 	virtual int				OnExecute();
 	virtual int				OnEnd(int nCode);
+
+	// 具体的应用处理函数
+	virtual int				OnApply();
 
 protected:
 	// 创建必要的输入工具
@@ -37,11 +44,17 @@ protected:
 	BOOL					BuildOffsetShape();
 
 protected:
-	kiOptionSet				m_optionSet;
-	bool						m_bOutSide;//向外还是向内
-	kiInputEntityTool			*m_pInputEntity;
-	kiInputDoubleTool			*m_pInputOffset;
-	double					m_dOffset;//偏移值
+	int						nSubCmd_; //子命令 0:Face 1:SHELL 2:SOLID
+	kiOptionSet				*pOptionSet_; 
+	kiOptionItem			*pSideOptItem_;
+	
+	kiInputEntityTool		*pInputEntity_;
+	kiInputOptionsTool		*pOptionsTool_;
+
+	double					dOffset_;//偏移值
+	int						nOffsetMethod_;//偏移方法
+	bool					bOutSide_;//向外还是向内
+	int						nJoinType_;//
 };
 
 #endif

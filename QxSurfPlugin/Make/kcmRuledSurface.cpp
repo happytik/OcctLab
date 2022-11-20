@@ -147,9 +147,11 @@ BOOL	kcmRuledSurface::CreateInputTools()
 {
 	m_pInputCurve1 = new kiInputEntityTool(this,"选择第一条曲线");
 	m_pInputCurve1->SetOption(KCT_ENT_EDGE,1);
+	m_pInputCurve1->SetNaturalMode(false);
 
 	m_pInputCurve2 = new kiInputEntityTool(this,"选择第二条曲线");
 	m_pInputCurve2->SetOption(KCT_ENT_EDGE,1);
+	m_pInputCurve2->SetNaturalMode(false);
 
 	return TRUE;
 }

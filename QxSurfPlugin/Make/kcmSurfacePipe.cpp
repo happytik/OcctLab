@@ -78,10 +78,11 @@ int		kcmSurfacePipe::OnEnd(int nCode)
 }
 
 // 创建必要的输入工具
-BOOL	kcmSurfacePipe::CreateInputTools()
+BOOL kcmSurfacePipe::CreateInputTools()
 {
 	m_pPickPathTool = new kiInputEntityTool(this,"拾取轨迹曲线");
 	m_pPickPathTool->SetOption(KCT_ENT_EDGE,1);
+	m_pPickPathTool->SetNaturalMode(false);
 
 	m_pInputRadiusTool = new kiInputDoubleTool(this,"管道半径");
 	m_pInputRadiusTool->Init(&m_dRadius,0.0001,10000);
@@ -89,7 +90,7 @@ BOOL	kcmSurfacePipe::CreateInputTools()
 	return TRUE;
 }
 
-BOOL	kcmSurfacePipe::DestroyInputTools()
+BOOL kcmSurfacePipe::DestroyInputTools()
 {
 	KC_SAFE_DELETE(m_pPickPathTool);
 	KC_SAFE_DELETE(m_pInputRadiusTool);
@@ -111,8 +112,8 @@ BOOL	kcmSurfacePipe::BuildPipe()
 	if(m_pPickPathTool->GetSelCount() != 1)
 		return FALSE;
 	kiSelEntity se = m_pPickPathTool->GetFirstSelect();
-	TopoDS_Shape aS = se._pEntity->GetShape();
-	if(aS.IsNull())
+	TopoDS_Shape aS = se.SelectShape();
+	if(aS.IsNull() || aS.ShapeType() != TopAbs_EDGE)
 		return FALSE;
 
 	double df,dl;

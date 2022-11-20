@@ -90,7 +90,7 @@ public:
 
 protected:
 	// 具体的创建显示对象
-	virtual bool						BuildGroupDisplay();
+	virtual bool					BuildGroupDisplay();
 
 protected:
 	double							_coneRadius;//锥底半径

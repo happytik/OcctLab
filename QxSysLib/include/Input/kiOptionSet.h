@@ -311,6 +311,7 @@ public:
 	kiOptionItem*				AddDoubleOption(const char *pname,char key,double& dval);
 	kiOptionItem*				AddButtonOption(const char *pname,char key,int nID);
 	kiOptionItem*				AddSysButtonOption(int nID);
+	void						AddApplyButtonOption();
 	void						AddQuitButtonOption();
 
 	//插入一个选项

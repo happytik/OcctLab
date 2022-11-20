@@ -102,7 +102,9 @@ enum eCmdPluginCmdType{
 	CMD_SOLID_TRIM_BYSHELL,
 	CMD_SOLID_TRIM_SPLIT,
 	CMD_SOLID_SEWING,
-	CMD_SOLID_OFFSET,
+	CMD_SOLID_OFFSET_FACE,
+	CMD_SOLID_OFFSET_SHELL,
+	CMD_SOLID_OFFSET_SOLID,
 	CMD_SOLID_SHEET,
 	CMD_SOLID_THICK,
 	CMD_SOLID_FILLET,
@@ -146,7 +148,9 @@ bool QxSolidPluginImpl::Initialize()
 	DoAddCommandItem((int)CMD_SOLID_TRIM_SPLIT,"²Ã¼ô","·Ö¸î²Ã¼ô(&P)");
 
 	DoAddCommandItem((int)CMD_SOLID_SEWING,"·ìºÏÇúÃæ(&S)");
-	DoAddCommandItem((int)CMD_SOLID_OFFSET,"Æ«ÒÆ(&O)");
+	DoAddCommandItem((int)CMD_SOLID_OFFSET_FACE,"Æ«ÒÆ","FACE offset");
+	DoAddCommandItem((int)CMD_SOLID_OFFSET_SHELL, "Æ«ÒÆ", "SHELL offset");
+	DoAddCommandItem((int)CMD_SOLID_OFFSET_SOLID, "Æ«ÒÆ","SOLID offset");
 	DoAddCommandItem((int)CMD_SOLID_SHEET,"³é¿Ç(&S)");
 	DoAddCommandItem((int)CMD_SOLID_THICK,"µÈºñ(&T)");
 
@@ -195,7 +199,9 @@ kiCommand* QxSolidPluginImpl::DoCreateCommand(int nLocalID)
 	case CMD_SOLID_TRIM_BYSHELL:	pCommand = new kcmSolidTrimByShell; break;
 	case CMD_SOLID_TRIM_SPLIT:		pCommand = new kcmSolidTrimSplit; break;
 	case CMD_SOLID_SEWING:		pCommand = new kcmSolidSewing; break;
-	case CMD_SOLID_OFFSET:		pCommand = new kcmSolidOffset; break;
+	case CMD_SOLID_OFFSET_FACE:		pCommand = new kcmSolidOffset(0); break;
+	case CMD_SOLID_OFFSET_SHELL:		pCommand = new kcmSolidOffset(1); break;
+	case CMD_SOLID_OFFSET_SOLID:		pCommand = new kcmSolidOffset(2); break;
 	case CMD_SOLID_SHEET:		pCommand = new kcmSheetSolid; break;
 	case CMD_SOLID_THICK:		pCommand = new kcmThickSolid; break;
 	case CMD_SOLID_FILLET:		pCommand = new kcmSolidFillet; break;

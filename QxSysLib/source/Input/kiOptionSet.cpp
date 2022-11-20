@@ -801,6 +801,11 @@ kiOptionItem*	  kiOptionSet::AddSysButtonOption(int nID)
 	return pItem;
 }
 
+void  kiOptionSet::AddApplyButtonOption()
+{
+	AddSysButtonOption(QX_SYS_BUTTON_APPLY);
+}
+
 void  kiOptionSet::AddQuitButtonOption()
 {
 	AddSysButtonOption(QX_SYS_BUTTON_CANCEL);
